@@ -3,181 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HARUM - SMK Kamarul Ariffin</title>
+    <title>HARUM - Game Launcher Hub</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
-    
-    <!-- Header / Banner Portal (Eksklusif & Menyerlah) -->
-    <header class="bg-gradient-to-r from-emerald-950 via-teal-900 to-emerald-900 text-white shadow-2xl relative overflow-hidden border-b-4 border-emerald-500/30">
-        <!-- Elemen Latar Belakang Grafik Corak & Cahaya -->
-        <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:16px_16px]"></div>
-        <div class="absolute -right-24 -top-24 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -left-24 -bottom-24 w-96 h-96 bg-teal-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Google Fonts untuk gaya gaming & futuristik -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .gaming-font { font-family: 'Orbitron', sans-serif; }
+        
+        /* Animasi Game Pulse & Neon Glow */
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 35px rgba(16, 185, 129, 0.7); }
+        }
+        .gaming-card-glow:hover {
+            animation: pulseGlow 2s infinite;
+        }
 
-        <div class="max-w-7xl mx-auto px-4 py-10 relative z-10 flex flex-col lg:flex-row justify-between items-center gap-8">
+        /* Kesan Neon Text Glitch / Glow Futuristik */
+        .futuristic-text {
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.8), 
+                         0 0 25px rgba(6, 182, 212, 0.6), 
+                         0 0 50px rgba(16, 185, 129, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-950">
+    
+    <!-- Top HUD / Game Launcher Header -->
+    <header class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 border-b border-emerald-500/30 shadow-[0_4px_30px_rgba(0,0,0,0.8)] relative overflow-hidden">
+        <!-- Elemen Latar Belakang Sci-Fi Grid -->
+        <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#10b981_1px,transparent_1px),linear-gradient(to_bottom,#10b981_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <div class="absolute -right-32 -top-32 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
+        <div class="absolute -left-32 -bottom-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 py-6 relative z-10 flex flex-col gap-6">
             
-            <!-- Bahagian Kiri: Logo & Identiti HARUM -->
-            <div class="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-6">
-                <!-- Logo Sekolah (Besar & Eksklusif) -->
-                <div class="bg-white/10 backdrop-blur-md p-2 rounded-2xl shadow-xl border border-white/20 flex items-center justify-center w-24 h-24 shrink-0 transform hover:scale-105 transition duration-300">
-                    <img src="/logo.png" alt="Logo SMK Kamarul Ariffin" class="w-full h-full object-contain drop-shadow-md" onerror="this.onerror=null; this.src='https://placehold.co/200x200/10b981/ffffff?text=SMKKA';">
-                </div>
+            <!-- Bahagian Atas: Logo, Info Sekolah & Kotak Carian -->
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
                 
-                <!-- Maklumat Tajuk & Akronim -->
-                <div class="space-y-1.5">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/20 border border-emerald-400/30 rounded-full text-emerald-300 text-xs font-semibold tracking-wider uppercase shadow-inner">
-                        <i class="fa-solid fa-school text-emerald-400"></i> Portal Rasmi SMK Kamarul Ariffin
+                <!-- Identiti Studio & Logo -->
+                <div class="flex items-center space-x-4 text-center sm:text-left">
+                    <div class="relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-cyan-400 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                        <div class="relative bg-slate-900 p-2 rounded-xl border border-emerald-500/50 flex items-center justify-center w-14 h-14 shrink-0 shadow-xl">
+                            <img src="/logo.png" alt="Logo SMK Kamarul Ariffin" class="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" onerror="this.onerror=null; this.src='https://placehold.co/200x200/022c22/ffffff?text=SMKKA';">
+                        </div>
                     </div>
                     <div>
-                        <h1 class="text-4xl sm:text-5xl font-black tracking-wider bg-gradient-to-r from-white via-emerald-200 to-teal-300 bg-clip-text text-transparent drop-shadow">
-                            HARUM
-                        </h1>
+                        <div class="flex items-center gap-2 text-emerald-400 text-[11px] font-mono tracking-widest uppercase">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> SMK Kamarul Ariffin Arcade
+                        </div>
+                        <div class="text-xs text-slate-400 font-medium">Hab Automasi Rekod &amp; Urus Maklumat</div>
                     </div>
-                    <!-- Akronim Penuh yang Jelas -->
-                    <p class="text-emerald-100/90 text-sm sm:text-base font-medium tracking-wide flex flex-wrap justify-center sm:justify-start gap-x-1.5 gap-y-0.5 pt-0.5">
-                        <span><strong class="text-emerald-400 font-bold">H</strong>ab</span>
-                        <span><strong class="text-emerald-400 font-bold">A</strong>utomasi</span>
-                        <span><strong class="text-emerald-400 font-bold">R</strong>ekod</span>
-                        <span>&amp;</span>
-                        <span><strong class="text-emerald-400 font-bold">U</strong>rus</span>
-                        <span><strong class="text-emerald-400 font-bold">M</strong>aklumat</span>
-                    </p>
                 </div>
+
+                <!-- Kotak Carian Misi / Mod -->
+                <div class="w-full lg:w-80">
+                    <div class="relative group">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-400 group-focus-within:text-white transition">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </span>
+                        <input type="text" id="searchApp" placeholder="Cari misi atau modul sistem..." class="w-full pl-11 pr-4 py-2.5 bg-slate-900/90 backdrop-blur-md border border-emerald-500/40 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent text-sm shadow-[inset_0_2px_4px_rgba(0,0,0,0.6)] transition">
+                    </div>
+                </div>
+
             </div>
 
-            <!-- Bahagian Kanan: Kotak Carian Pantas -->
-            <div class="w-full lg:w-80">
-                <div class="relative group">
-                    <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-300 group-focus-within:text-white transition">
-                        <i class="fa-solid fa-search"></i>
-                    </span>
-                    <input type="text" id="searchApp" placeholder="Cari sistem atau modul..." class="w-full pl-11 pr-4 py-3.5 bg-slate-900/70 backdrop-blur-md border border-emerald-500/40 rounded-2xl text-white placeholder-emerald-300/60 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent text-sm shadow-2xl transition">
+            <!-- Bahagian Grafik Tipografi Futuristik "HARUM" (Merentang Penuh Horizontal) -->
+            <div class="relative w-full py-4 px-6 bg-slate-950/70 backdrop-blur-md border-y border-emerald-500/40 rounded-2xl overflow-hidden shadow-[inset_0_0_20px_rgba(16,185,129,0.15)] flex items-center justify-center">
+                <!-- Garisan Cahaya Latar Belakang Digital -->
+                <div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(16,185,129,0.1)_50%,transparent_100%)]"></div>
+                
+                <!-- Teks Merentang Lebar Penuh (Horizontal Stretch) -->
+                <div class="w-full flex justify-between items-center text-emerald-400 font-black gaming-font text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter select-none futuristic-text px-2">
+                    <span class="hover:text-cyan-300 hover:scale-110 transition duration-300 cursor-default">H</span>
+                    <span class="hover:text-cyan-300 hover:scale-110 transition duration-300 cursor-default">A</span>
+                    <span class="hover:text-cyan-300 hover:scale-110 transition duration-300 cursor-default">R</span>
+                    <span class="hover:text-cyan-300 hover:scale-110 transition duration-300 cursor-default">U</span>
+                    <span class="hover:text-cyan-300 hover:scale-110 transition duration-300 cursor-default">M</span>
+                </div>
+
+                <!-- HUD Decorative Code Tags -->
+                <div class="absolute bottom-1 right-4 text-[10px] font-mono text-emerald-500/60 uppercase tracking-widest hidden sm:block pointer-events-none">
+                    // SYSTEM: SECURE_CORE //
+                </div>
+                <div class="absolute top-1 left-4 text-[10px] font-mono text-cyan-400/60 uppercase tracking-widest hidden sm:block pointer-events-none">
+                    [ONLINE LAUNCHER v2.6]
                 </div>
             </div>
 
         </div>
     </header>
 
-    <!-- Kandungan Utama -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+    <!-- Main Game Library Area -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
         
-        <!-- Butang Penapis Kategori -->
-        <div class="flex flex-wrap gap-2 mb-8 justify-center md:justify-start" id="filterButtons">
-            <button onclick="filterCategory('all')" class="filter-btn px-4 py-2 bg-emerald-700 text-white rounded-lg shadow text-sm font-medium transition hover:bg-emerald-800 active-btn">Semua</button>
-            <button onclick="filterCategory('Pentadbiran')" class="filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100">Pentadbiran</button>
-            <button onclick="filterCategory('Kurikulum')" class="filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100">Kurikulum</button>
-            <button onclick="filterCategory('HEM')" class="filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100">Hal Ehwal Murid</button>
-            <button onclick="filterCategory('KoKurikulum')" class="filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100">KoKurikulum</button>
+        <!-- Controller / Filter Tab Menu -->
+        <div class="flex items-center justify-between mb-6 flex-wrap gap-4 border-b border-slate-800 pb-4">
+            <div class="flex items-center space-x-2 text-slate-400 text-xs uppercase tracking-widest font-mono">
+                <i class="fa-solid fa-layer-group text-emerald-400"></i>
+                <span>Pilih Mod Kategori:</span>
+            </div>
+            
+            <div class="flex flex-wrap gap-2" id="filterButtons">
+                <button onclick="filterCategory('all')" class="filter-btn px-4 py-2 bg-emerald-600 text-white rounded-lg shadow-lg shadow-emerald-900/40 text-xs font-bold uppercase tracking-wider transition hover:bg-emerald-500 active-btn gaming-font border border-emerald-400/30">Semua Mod</button>
+                <button onclick="filterCategory('Pentadbiran')" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white gaming-font">Pentadbiran</button>
+                <button onclick="filterCategory('Kurikulum')" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white gaming-font">Kurikulum</button>
+                <button onclick="filterCategory('HEM')" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white gaming-font">HEM</button>
+                <button onclick="filterCategory('KoKurikulum')" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white gaming-font">KoKurikulum</button>
+            </div>
         </div>
 
-        <!-- Senarai Kad Aplikasi -->
+        <!-- Senarai Kad Mod Permainan (App Cards) -->
         <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <!-- 1. Pentadbiran -->
-            <div class="app-card bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition duration-300" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
+            <div class="app-card bg-slate-900/90 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-emerald-500/60 gaming-card-glow transition-all duration-300 transform hover:-translate-y-2 relative group overflow-hidden" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
+                <div class="absolute -right-12 -top-12 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition"></div>
+                
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">Pentadbiran</span>
-                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                            <i class="fa-solid fa-screwdriver-wrench text-lg"></i>
+                        <span class="px-3 py-1 bg-blue-950/80 text-blue-400 border border-blue-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">MOD: PENTADBIRAN</span>
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shadow-inner group-hover:scale-110 transition duration-300">
+                            <i class="fa-solid fa-screwdriver-wrench text-xl"></i>
                         </div>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">Laporan Kerosakan</h3>
-                    <p class="text-slate-600 text-sm mb-4">Sistem pelaporan dan pengurusan kerosakan fasiliti sekolah dengan pantas.</p>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition">Laporan Kerosakan</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Sistem pelaporan pantas untuk membaiki kerosakan fasiliti sekolah dengan sistem tiket masa nyata.</p>
                 </div>
-                <div class="mt-5">
-                    <div class="text-xs text-slate-400 mb-3 truncate font-mono">rosak.semekar.com</div>
-                    <a href="https://rosak.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-xl transition text-sm shadow-sm hover:shadow">
-                        <span>Buka Aplikasi</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
+                        <span>Status: <span class="text-emerald-400 font-bold">ONLINE</span></span>
+                        <span class="truncate ml-2 text-slate-400">rosak.semekar.com</span>
+                    </div>
+                    <a href="https://rosak.semekar.com" target="_blank" class="w-full relative group/btn overflow-hidden rounded-xl inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-3 px-4 transition-all duration-300 shadow-lg hover:shadow-blue-500/25 active:scale-95 text-xs tracking-wider uppercase gaming-font">
+                        <span class="absolute inset-0 w-full h-full bg-white/20 transform -translate-x-full group-hover/btn:translate-x-0 transition duration-300"></span>
+                        <span class="relative flex items-center gap-2">
+                            <span>LAUNCH APP</span>
+                            <i class="fa-solid fa-play text-[10px]"></i>
+                        </span>
                     </a>
                 </div>
             </div>
 
             <!-- 2. Kurikulum -->
-            <div class="app-card bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition duration-300" data-category="Kurikulum" data-name="pengurusan headcount headcount.semekar.com kurikulum">
+            <div class="app-card bg-slate-900/90 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-emerald-500/60 gaming-card-glow transition-all duration-300 transform hover:-translate-y-2 relative group overflow-hidden" data-category="Kurikulum" data-name="pengurusan headcount headcount.semekar.com kurikulum">
+                <div class="absolute -right-12 -top-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition"></div>
+                
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">Kurikulum</span>
-                        <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
-                            <i class="fa-solid fa-chart-line text-lg"></i>
+                        <span class="px-3 py-1 bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">MOD: KURIKULUM</span>
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shadow-inner group-hover:scale-110 transition duration-300">
+                            <i class="fa-solid fa-chart-line text-xl"></i>
                         </div>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">Pengurusan Headcount</h3>
-                    <p class="text-slate-600 text-sm mb-4">Analisis prestasi akademik, sasaran pencapaian, dan headcount murid.</p>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition">Pengurusan Headcount</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Analisis prestasi akademik murid, unjuran sasaran peperiksaan, dan metrik kemajuan.</p>
                 </div>
-                <div class="mt-5">
-                    <div class="text-xs text-slate-400 mb-3 truncate font-mono">headcount.semekar.com</div>
-                    <a href="https://headcount.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-4 rounded-xl transition text-sm shadow-sm hover:shadow">
-                        <span>Buka Aplikasi</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
+                        <span>Status: <span class="text-emerald-400 font-bold">ONLINE</span></span>
+                        <span class="truncate ml-2 text-slate-400">headcount.semekar.com</span>
+                    </div>
+                    <a href="https://headcount.semekar.com" target="_blank" class="w-full relative group/btn overflow-hidden rounded-xl inline-flex items-center justify-center bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold py-3 px-4 transition-all duration-300 shadow-lg hover:shadow-emerald-500/25 active:scale-95 text-xs tracking-wider uppercase gaming-font">
+                        <span class="absolute inset-0 w-full h-full bg-white/20 transform -translate-x-full group-hover/btn:translate-x-0 transition duration-300"></span>
+                        <span class="relative flex items-center gap-2">
+                            <span>LAUNCH APP</span>
+                            <i class="fa-solid fa-play text-[10px]"></i>
+                        </span>
                     </a>
                 </div>
             </div>
 
             <!-- 3. Hal Ehwal Murid -->
-            <div class="app-card bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition duration-300" data-category="HEM" data-name="pelaporan kehadiran murid hadir.semekar.com hem hal ehwal murid">
+            <div class="app-card bg-slate-900/90 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-emerald-500/60 gaming-card-glow transition-all duration-300 transform hover:-translate-y-2 relative group overflow-hidden" data-category="HEM" data-name="pelaporan kehadiran murid hadir.semekar.com hem hal ehwal murid">
+                <div class="absolute -right-12 -top-12 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition"></div>
+                
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full">Hal Ehwal Murid</span>
-                        <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
-                            <i class="fa-solid fa-user-check text-lg"></i>
+                        <span class="px-3 py-1 bg-amber-950/80 text-amber-400 border border-amber-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">MOD: HEM</span>
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 shadow-inner group-hover:scale-110 transition duration-300">
+                            <i class="fa-solid fa-user-check text-xl"></i>
                         </div>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">Pelaporan Kehadiran Murid</h3>
-                    <p class="text-slate-600 text-sm mb-4">Sistem rekod, pemantauan, dan statistik kehadiran harian murid.</p>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition">Pelaporan Kehadiran Murid</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Papan pemuka rekod kehadiran harian, statistik ponteng, dan analisis disiplin pelajar.</p>
                 </div>
-                <div class="mt-5">
-                    <div class="text-xs text-slate-400 mb-3 truncate font-mono">hadir.semekar.com</div>
-                    <a href="https://hadir.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-amber-600 hover:bg-amber-700 text-white font-medium py-2.5 px-4 rounded-xl transition text-sm shadow-sm hover:shadow">
-                        <span>Buka Aplikasi</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
+                        <span>Status: <span class="text-emerald-400 font-bold">ONLINE</span></span>
+                        <span class="truncate ml-2 text-slate-400">hadir.semekar.com</span>
+                    </div>
+                    <a href="https://hadir.semekar.com" target="_blank" class="w-full relative group/btn overflow-hidden rounded-xl inline-flex items-center justify-center bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold py-3 px-4 transition-all duration-300 shadow-lg hover:shadow-amber-500/25 active:scale-95 text-xs tracking-wider uppercase gaming-font">
+                        <span class="absolute inset-0 w-full h-full bg-white/20 transform -translate-x-full group-hover/btn:translate-x-0 transition duration-300"></span>
+                        <span class="relative flex items-center gap-2">
+                            <span>LAUNCH APP</span>
+                            <i class="fa-solid fa-play text-[10px]"></i>
+                        </span>
                     </a>
                 </div>
             </div>
 
             <!-- 4. KoKurikulum -->
-            <div class="app-card bg-white rounded-2xl shadow-sm border border-slate-200/80 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition duration-300" data-category="KoKurikulum" data-name="pelaporan aktiviti kokurikulum koku.semekar.com">
+            <div class="app-card bg-slate-900/90 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-emerald-500/60 gaming-card-glow transition-all duration-300 transform hover:-translate-y-2 relative group overflow-hidden" data-category="KoKurikulum" data-name="pelaporan aktiviti kokurikulum koku.semekar.com">
+                <div class="absolute -right-12 -top-12 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition"></div>
+                
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-purple-50 text-purple-700 text-xs font-semibold rounded-full">KoKurikulum</span>
-                        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600">
-                            <i class="fa-solid fa-medal text-lg"></i>
+                        <span class="px-3 py-1 bg-purple-950/80 text-purple-400 border border-purple-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">MOD: KOKURIKULUM</span>
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shadow-inner group-hover:scale-110 transition duration-300">
+                            <i class="fa-solid fa-medal text-xl"></i>
                         </div>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">Pelaporan Aktiviti KoKurikulum</h3>
-                    <p class="text-slate-600 text-sm mb-4">Dokumentasi aktiviti unit beruniform, kelab, persatuan, dan sukan permainan.</p>
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-300 transition">Pelaporan Aktiviti KoKurikulum</h3>
+                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Dokumentasi log aktiviti unit beruniform, kelab, persatuan, serta markah PAJSK.</p>
                 </div>
-                <div class="mt-5">
-                    <div class="text-xs text-slate-400 mb-3 truncate font-mono">koku.semekar.com</div>
-                    <a href="https://koku.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-medium py-2.5 px-4 rounded-xl transition text-sm shadow-sm hover:shadow">
-                        <span>Buka Aplikasi</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                <div>
+                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
+                        <span>Status: <span class="text-emerald-400 font-bold">ONLINE</span></span>
+                        <span class="truncate ml-2 text-slate-400">koku.semekar.com</span>
+                    </div>
+                    <a href="https://koku.semekar.com" target="_blank" class="w-full relative group/btn overflow-hidden rounded-xl inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-4 transition-all duration-300 shadow-lg hover:shadow-purple-500/25 active:scale-95 text-xs tracking-wider uppercase gaming-font">
+                        <span class="absolute inset-0 w-full h-full bg-white/20 transform -translate-x-full group-hover/btn:translate-x-0 transition duration-300"></span>
+                        <span class="relative flex items-center gap-2">
+                            <span>LAUNCH APP</span>
+                            <i class="fa-solid fa-play text-[10px]"></i>
+                        </span>
                     </a>
                 </div>
             </div>
 
         </div>
 
-        <!-- Mesej jika carian tidak jumpa -->
-        <div id="noResults" class="hidden text-center py-12">
-            <i class="fa-solid fa-face-sad-tear text-slate-300 text-5xl mb-3"></i>
-            <p class="text-slate-500 text-lg font-medium">Tiada aplikasi sepadan ditemui.</p>
+        <!-- Mesej jika tiada modul dijumpai -->
+        <div id="noResults" class="hidden text-center py-20">
+            <div class="inline-block p-4 rounded-full bg-slate-900 border border-slate-800 mb-4 text-emerald-400 animate-bounce">
+                <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
+            </div>
+            <p class="text-slate-400 text-base font-semibold gaming-font">MISI ATAU MOD TIDAK DIJUMPAI</p>
+            <p class="text-slate-600 text-xs mt-1">Cuba semak semula ejaan kata kunci carian anda.</p>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-slate-200 mt-auto py-6">
-        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
-            <p>&copy; 2026 <strong>HARUM</strong> — SMK Kamarul Ariffin. Hak Cipta Terpelihara.</p>
+    <!-- Footer Launcher -->
+    <footer class="bg-slate-900 border-t border-slate-800 mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span><strong>HARUM</strong> Game Station — SMK Kamarul Ariffin</span>
+            </div>
+            <div class="font-mono text-[10px] text-slate-600">
+                SYSTEM SECURE // READY TO DEPLOY
+            </div>
         </div>
     </footer>
 
-    <!-- Skrip Fungsi Carian & Penapisan -->
+    <!-- Skrip Pengurusan Carian & Penapisan Kategori -->
     <script>
         const searchInput = document.getElementById('searchApp');
         const appCards = document.querySelectorAll('.app-card');
@@ -190,10 +275,10 @@
             currentCategory = category;
             
             filterButtons.forEach(btn => {
-                if(btn.textContent.includes(category === 'all' ? 'Semua' : category)) {
-                    btn.className = "filter-btn px-4 py-2 bg-emerald-700 text-white rounded-lg shadow text-sm font-medium transition hover:bg-emerald-800";
+                if(btn.textContent.toLowerCase().includes(category.toLowerCase()) || (category === 'all' && btn.textContent.includes('Semua'))) {
+                    btn.className = "filter-btn px-4 py-2 bg-emerald-600 text-white rounded-lg shadow-lg shadow-emerald-900/40 text-xs font-bold uppercase tracking-wider transition hover:bg-emerald-500 active-btn gaming-font border border-emerald-400/30";
                 } else {
-                    btn.className = "filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100";
+                    btn.className = "filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white gaming-font";
                 }
             });
 
