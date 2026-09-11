@@ -108,11 +108,11 @@
             </div>
             
             <div class="flex flex-wrap gap-2" id="filterButtons">
-                <button onclick="filterCategory('all')" class="filter-btn px-4 py-2 bg-emerald-600 text-white rounded-lg shadow-lg shadow-emerald-900/40 text-xs font-bold uppercase tracking-wider transition hover:bg-emerald-500 active-btn futuristic-font border border-emerald-400/30">Semua</button>
-                <button onclick="filterCategory('Pentadbiran')" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font">Pentadbiran</button>
-                <button onclick="filterCategory('Kurikulum')" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font">Kurikulum</button>
-                <button onclick="filterCategory('HEM')" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font">HEM</button>
-                <button onclick="filterCategory('KoKurikulum')" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font">KoKurikulum</button>
+                <button onclick="filterCategory('all')" data-cat="all" class="filter-btn px-4 py-2 bg-emerald-600 text-white rounded-lg shadow-lg shadow-emerald-900/40 text-xs font-bold uppercase tracking-wider transition hover:bg-emerald-500 active-btn futuristic-font border border-emerald-400/30">Semua</button>
+                <button onclick="filterCategory('Pentadbiran')" data-cat="Pentadbiran" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font">Pentadbiran</button>
+                <button onclick="filterCategory('Kurikulum')" data-cat="Kurikulum" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font">Kurikulum</button>
+                <button onclick="filterCategory('HEM')" data-cat="HEM" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font">HEM</button>
+                <button onclick="filterCategory('KoKurikulum')" data-cat="KoKurikulum" class="filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font">KoKurikulum</button>
             </div>
         </div>
 
@@ -273,7 +273,7 @@
             currentCategory = category;
             
             filterButtons.forEach(btn => {
-                if(btn.textContent.toLowerCase().includes(category.toLowerCase()) || (category === 'all' && btn.textContent.includes('Semua'))) {
+                if(btn.getAttribute('data-cat') === category) {
                     btn.className = "filter-btn px-4 py-2 bg-emerald-600 text-white rounded-lg shadow-lg shadow-emerald-900/40 text-xs font-bold uppercase tracking-wider transition hover:bg-emerald-500 active-btn futuristic-font border border-emerald-400/30";
                 } else {
                     btn.className = "filter-btn px-4 py-2 bg-slate-900 text-slate-300 border border-slate-800 rounded-lg text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white futuristic-font";
