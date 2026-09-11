@@ -246,46 +246,44 @@
             <p class="text-slate-600 text-xs mt-1">Sila semak semula ejaan kata kunci carian anda.</p>
         </div>
 
-        <!-- MODUL TAMBAHAN: ARKED KRIKET (GAYA CHROME DINO) -->
-        <section class="mt-8 pt-8 border-t border-slate-800">
+        <!-- SEKSYEN GRAFIK SEKOLAH & CUACA TERKINI -->
+        <section class="mt-12 pt-8 border-t border-slate-800">
             <div class="bg-slate-900/90 rounded-3xl border border-emerald-500/40 p-6 md:p-8 shadow-2xl relative overflow-hidden">
-                <div class="absolute -left-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
+                <!-- Header Seksyen & HUD Cuaca Labis -->
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 relative z-10">
                     <div>
                         <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-1">
-                            <i class="fa-solid fa-gamepad"></i> Mod Santai SEMEKAR Arcade
+                            <i class="fa-solid fa-school"></i> Suasana Kampus Sekolah
                         </div>
-                        <h2 class="text-2xl font-black text-white futuristic-font">ARKED KRIKET: DEFEND STUMP</h2>
+                        <h2 class="text-2xl font-black text-white futuristic-font">SMK KAMARUL ARIFFIN, LABIS</h2>
                     </div>
-                    <!-- Statistik Permainan -->
-                    <div class="flex items-center gap-4 bg-slate-950 px-5 py-2.5 rounded-2xl border border-slate-800 text-xs font-mono">
-                        <div>SKOR: <span id="cricketScore" class="text-emerald-400 font-bold text-sm">0</span></div>
-                        <div class="text-slate-700">|</div>
-                        <div>NYAWA: <span id="cricketLives" class="text-red-400 font-bold text-sm">❤️❤️❤️</span></div>
+
+                    <!-- Panel HUD Cuaca Semasa (Labis, Johor) -->
+                    <div class="flex items-center gap-4 bg-slate-950 px-5 py-3 rounded-2xl border border-slate-800 text-xs font-mono shadow-inner">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-cloud text-slate-400 text-base"></i>
+                            <div>
+                                <div class="text-[10px] text-slate-500 uppercase">Cuaca Labis</div>
+                                <div class="text-emerald-400 font-bold">24°C • Berawan / Mendung</div>
+                            </div>
+                        </div>
+                        <div class="h-6 w-[1px] bg-slate-800"></div>
+                        <div>
+                            <div class="text-[10px] text-slate-500 uppercase">Kelembapan</div>
+                            <div class="text-slate-300 font-bold">94%</div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Canvas Permainan Gaya Google Chrome Dino -->
-                <div class="relative w-full max-w-2xl mx-auto bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden shadow-inner flex flex-col items-center justify-center">
-                    <canvas id="cricketCanvas" width="600" height="320" class="w-full h-auto cursor-pointer block"></canvas>
+                <!-- Paparan Animasi Canvas Sekolah (Pokok Bergoyang, Burung Berterbangan, Logo, SEMEKAR, Awan Mendung) -->
+                <div class="relative w-full rounded-2xl border border-slate-800 overflow-hidden shadow-inner bg-slate-950 flex flex-col items-center justify-center">
+                    <canvas id="schoolCanvas" width="900" height="340" class="w-full h-auto block"></canvas>
                     
-                    <!-- Lapisan Mula / Game Over Overlay -->
-                    <div id="cricketOverlay" class="absolute inset-0 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6 transition-all">
-                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-3 border border-white/20">
-                            <i class="fa-solid fa-shield-halved text-xl text-emerald-400"></i>
-                        </div>
-                        <h3 id="overlayTitle" class="text-2xl font-black text-white futuristic-font mb-2 tracking-wide">ARKED KRIKET RETRO</h3>
-                        <p id="overlayDesc" class="text-slate-400 text-xs max-w-md mb-6 leading-relaxed">
-                            Gunakan kekunci <b>Panah Kiri & Kanan</b> untuk menggerakkan pemukul dan tekan <b>Spacebar</b> untuk memukul bola yang meluru dari pelbagai sudut sebelum ia merempuh stump!
-                        </p>
-                        <button onclick="startCricketGame()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-900/50 futuristic-font transition transform hover:scale-105 border border-emerald-400/40">
-                            Mula Main (Space / Click)
-                        </button>
+                    <div class="absolute bottom-3 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-lg border border-slate-800 text-[10px] font-mono text-slate-400">
+                        <i class="fa-solid fa-circle text-emerald-400 animate-pulse mr-1"></i> Live Atmospheric Feed: Labis, Johor
                     </div>
-                </div>
-                <div class="text-center mt-3 text-[11px] text-slate-500 font-mono">
-                    Kawalan: Panah Kiri/Kanan (Gerak) | Spacebar / Klik (Ayun Pemukul)
                 </div>
             </div>
         </section>
@@ -305,7 +303,7 @@
         </div>
     </footer>
 
-    <!-- Skrip Carian & Penapisan Kategori -->
+    <!-- Skrip Carian, Penapisan Kategori & Animasi Sekolah -->
     <script>
         const searchInput = document.getElementById('searchApp');
         const appCards = document.querySelectorAll('.app-card');
@@ -356,254 +354,160 @@
 
         searchInput.addEventListener('input', filterApps);
 
-        // --- SKRIP PERMAINAN ARKED KRIKET (GAYA CHROME DINO & PELBAGAI SUDUT) ---
-        const canvas = document.getElementById('cricketCanvas');
+        // --- SKRIP ANIMASI KANVAS SEKOLAH, POKOK BERGOYANG & BURUNG ---
+        const canvas = document.getElementById('schoolCanvas');
         const ctx = canvas.getContext('2d');
-        const scoreEl = document.getElementById('cricketScore');
-        const livesEl = document.getElementById('cricketLives');
-        const overlay = document.getElementById('cricketOverlay');
-        const overlayTitle = document.getElementById('overlayTitle');
-        const overlayDesc = document.getElementById('overlayDesc');
 
-        let gameRunning = false;
-        let score = 0;
-        let lives = 3;
-        let gameSpeed = 2;
+        // Muat naik logo sekolah untuk dipaparkan pada bangunan
+        const schoolLogo = new Image();
+        schoolLogo.src = '/logo.png';
 
-        // Entiti Batter, Stumps & Balls
-        let stumps = { x: 285, y: 250, width: 30, height: 40, collapsed: false };
-        let batter = { x: 275, y: 240, width: 50, height: 12, vx: 0, swinging: false, swingTimer: 0 };
-        let balls = [];
-        let spawnTimer = 0;
+        // Entiti Awan (Cuaca Mendung)
+        let clouds = [
+            { x: 100, y: 50, speed: 0.3, size: 40 },
+            { x: 450, y: 30, speed: 0.2, size: 60 },
+            { x: 750, y: 70, speed: 0.25, size: 50 }
+        ];
 
-        let keys = { left: false, right: false, swing: false };
+        // Entiti Burung Berterbangan
+        let birds = [
+            { x: -50, y: 80, speed: 1.2, wingCycle: 0 },
+            { x: -120, y: 110, speed: 1.0, wingCycle: 20 },
+            { x: -200, y: 70, speed: 1.4, wingCycle: 40 }
+        ];
 
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = true;
-            if (e.key === 'ArrowRight' || e.key === 'd') keys.right = true;
-            if (e.key === ' ' || e.key === 'ArrowUp') {
-                keys.swing = true;
-                if (!gameRunning && !overlay.classList.contains('hidden')) {
-                    startCricketGame();
-                }
-            }
-        });
+        // Pembolehubah untuk pokok bergoyang
+        let swayAngle = 0;
 
-        window.addEventListener('keyup', (e) => {
-            if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = false;
-            if (e.key === 'ArrowRight' || e.key === 'd') keys.right = false;
-            if (e.key === ' ' || e.key === 'ArrowUp') keys.swing = false;
-        });
-
-        // Sentuhan skrin untuk telefon pintar
-        canvas.addEventListener('click', () => {
-            keys.swing = true;
-            setTimeout(() => keys.swing = false, 150);
-        });
-
-        function startCricketGame() {
-            score = 0;
-            lives = 3;
-            gameSpeed = 2.2;
-            balls = [];
-            stumps.collapsed = false;
-            scoreEl.textContent = score;
-            livesEl.textContent = '❤️❤️❤️';
-            overlay.classList.add('hidden');
-            gameRunning = true;
-            loop();
-        }
-
-        function spawnBall() {
-            // Bola datang dari pelbagai sudut di bahagian atas (kiri, tengah, kanan)
-            let startX = Math.random() * (canvas.width - 100) + 50;
-            let startY = -10;
-            let targetX = stumps.x + stumps.width / 2 + (Math.random() * 40 - 20);
-            let targetY = stumps.y + 10;
-
-            let angle = Math.atan2(targetY - startY, targetX - startX);
-            let vx = Math.cos(angle) * gameSpeed;
-            let vy = Math.sin(angle) * gameSpeed;
-
-            balls.push({
-                x: startX,
-                y: startY,
-                vx: vx,
-                vy: vy,
-                radius: 6,
-                active: true
-            });
-        }
-
-        function update() {
-            if (!gameRunning) return;
-
-            // Kawalan Gerak Batter ke kiri & kanan
-            if (keys.left) batter.x -= 5;
-            if (keys.right) batter.x += 5;
-
-            // Had sempadan kanvas
-            if (batter.x < 150) batter.x = 150;
-            if (batter.x + batter.width > canvas.width - 150) batter.x = canvas.width - 150;
-
-            // Proses Swing Pemukul
-            if (keys.swing && !batter.swinging) {
-                batter.swinging = true;
-                batter.swingTimer = 12; // tempoh bingkai ayunan
-            }
-            if (batter.swinging) {
-                batter.swingTimer--;
-                if (batter.swingTimer <= 0) batter.swinging = false;
-            }
-
-            // Spawn bola baru secara beransur-ansur
-            spawnTimer++;
-            let spawnInterval = Math.max(40, 100 - Math.floor(score / 50)); // Semakin tinggi skor, semakin kerap bola muncul
-            if (spawnTimer >= spawnInterval) {
-                spawnBall();
-                spawnTimer = 0;
-            }
-
-            // Kemas kini kedudukan bola
-            for (let i = balls.length - 1; i >= 0; i--) {
-                let b = balls[i];
-                b.x += b.vx;
-                b.y += b.vy;
-
-                // Semak perlanggaran dengan Pemukul (Bat) semasa ayunan
-                let batHitbox = {
-                    x: batter.x - (batter.swinging ? 10 : 0),
-                    y: batter.y - 5,
-                    width: batter.width + (batter.swinging ? 20 : 0),
-                    height: batter.height + 10
-                };
-
-                if (
-                    b.active &&
-                    b.x >= batHitbox.x &&
-                    b.x <= batHitbox.x + batHitbox.width &&
-                    b.y >= batHitbox.y &&
-                    b.y <= batHitbox.y + batHitbox.height
-                ) {
-                    // Bola berjaya dipukul keluar!
-                    b.active = false;
-                    score += 10;
-                    scoreEl.textContent = score;
-                    gameSpeed += 0.05; // Tambah kelajuan permainan secara progresif
-                }
-
-                // Semak jika bola menghentam stump
-                if (
-                    b.active &&
-                    !stumps.collapsed &&
-                    b.x >= stumps.x - 5 &&
-                    b.x <= stumps.x + stumps.width + 5 &&
-                    b.y >= stumps.y &&
-                    b.y <= stumps.y + stumps.height
-                ) {
-                    b.active = false;
-                    stumps.collapsed = true;
-                    lives--;
-                    updateLivesDisplay();
-
-                    if (lives > 0) {
-                        setTimeout(() => {
-                            stumps.collapsed = false;
-                            balls = []; // Kosongkan bola semasa reset nyawa
-                        }, 800);
-                    } else {
-                        endGame();
-                    }
-                }
-
-                // Buang bola yang keluar dari skrin
-                if (b.y > canvas.height + 20 || b.x < -20 || b.x > canvas.width + 20) {
-                    balls.splice(i, 1);
-                }
-            }
-        }
-
-        function updateLivesDisplay() {
-            let hearts = '';
-            for (let i = 0; i < lives; i++) hearts += '❤️';
-            livesEl.textContent = hearts;
-        }
-
-        function draw() {
-            // Grafik gaya retro monochrome / hitam putih bersih ala Google Chrome Dino
-            ctx.fillStyle = '#020617'; // Latar belakang gelap pekat
+        function animateSchoolScene() {
+            // Latar Belakang Langit Mendung (Cloudy Weather Theme)
+            let skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            skyGrad.addColorStop(0, '#0f172a');
+            skyGrad.addColorStop(1, '#1e293b');
+            ctx.fillStyle = skyGrad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Garisan Pitch & Grid Minimalis (Gaya Retro Vector)
-            ctx.strokeStyle = '#1e293b';
+            // 1. Lukis Awan Bergerak Perlahan
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+            for (let c of clouds) {
+                c.x += c.speed;
+                if (c.x > canvas.width + 100) c.x = -100;
+                
+                ctx.beginPath();
+                ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
+                ctx.arc(c.x + c.size * 0.6, c.y - c.size * 0.2, c.size * 0.7, 0, Math.PI * 2);
+                ctx.arc(c.x + c.size * 1.2, c.y, c.size * 0.8, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // 2. Lukis Burung Berterbangan
+            ctx.strokeStyle = '#94a3b8';
             ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.moveTo(canvas.width / 2, 0);
-            ctx.lineTo(canvas.width / 2, canvas.height);
-            ctx.stroke();
-
-            // Lukis Stumps (Gaya Siluet Putih Bersih)
-            ctx.fillStyle = stumps.collapsed ? '#ef4444' : '#f8fafc';
-            if (!stumps.collapsed) {
-                ctx.fillRect(stumps.x, stumps.y, 6, stumps.height);
-                ctx.fillRect(stumps.x + 12, stumps.y, 6, stumps.height);
-                ctx.fillRect(stumps.x + 24, stumps.y, 6, stumps.height);
-                // Bails di atas stump
-                ctx.fillRect(stumps.x - 2, stumps.y - 4, 32, 4);
-            } else {
-                // Animasi runtuh stump
-                ctx.save();
-                ctx.translate(stumps.x + 15, stumps.y + 20);
-                ctx.rotate(Math.PI / 2.5);
-                ctx.fillRect(-15, -20, 35, 6);
-                ctx.restore();
+            for (let b of birds) {
+                b.x += b.speed;
+                b.wingCycle += 0.08;
+                if (b.x > canvas.width + 50) {
+                    b.x = -50 - Math.random() * 100;
+                    b.y = 50 + Math.random() * 60;
+                }
+                
+                let wingOffset = Math.sin(b.wingCycle) * 6;
+                ctx.beginPath();
+                ctx.moveTo(b.x - 10, b.y + wingOffset);
+                ctx.quadraticCurveTo(b.x, b.y - 5, b.x + 10, b.y + wingOffset);
+                ctx.moveTo(b.x + 10, b.y + wingOffset);
+                ctx.quadraticCurveTo(b.x + 20, b.y - 5, b.x + 30, b.y + wingOffset);
+                ctx.stroke();
             }
 
-            // Lukis Batter & Pemukul (Siluet Retro Pixel/Vector)
-            ctx.fillStyle = '#10b981'; // Hijau neon SEMEKAR
-            // Badan batter
-            ctx.fillRect(batter.x + 15, batter.y - 20, 20, 25);
-            // Kepala batter
-            ctx.fillRect(batter.x + 18, batter.y - 32, 14, 10);
+            // 3. Lukis Tapak / Tanah Sekolah
+            ctx.fillStyle = '#064e3b';
+            ctx.fillRect(0, canvas.height - 45, canvas.width, 45);
+            ctx.fillStyle = '#047857';
+            ctx.fillRect(0, canvas.height - 45, canvas.width, 8);
+
+            // 4. Lukis Bangunan Sekolah SMK Kamarul Ariffin
+            let bX = 250, bY = 110, bW = 400, bH = 185;
             
-            // Pemukul (Bat) - Bergerak dinamik apabila swing
+            // Badan Utama Bangunan
+            ctx.fillStyle = '#334155';
+            ctx.fillRect(bX, bY, bW, bH);
+            
+            // Bumbung Bangunan (Gaya Tradisional Moden)
+            ctx.fillStyle = '#0f766e';
+            ctx.beginPath();
+            ctx.moveTo(bX - 20, bY);
+            ctx.lineTo(bX + bW / 2, bY - 55);
+            ctx.lineTo(bX + bW + 20, bY);
+            ctx.closePath();
+            ctx.fill();
+
+            // Papan Tanda / Papan Nama Bangunan & Perkataan SEMEKAR
+            ctx.fillStyle = '#022c22';
+            ctx.fillRect(bX + 80, bY + 15, bW - 160, 40);
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(bX + 80, bY + 15, bW - 160, 40);
+
             ctx.fillStyle = '#f8fafc';
-            if (batter.swinging) {
-                ctx.fillRect(batter.x - 5, batter.y - 10, batter.width + 10, 8);
-            } else {
-                ctx.fillRect(batter.x + 35, batter.y - 15, 8, 25);
+            ctx.font = 'bold 15px "Orbitron", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText('SEMEKAR', bX + bW / 2, bY + 41);
+
+            // Letak Logo Sekolah di Bangunan
+            try {
+                ctx.drawImage(schoolLogo, bX + 95, bY + 20, 30, 30);
+            } catch(e) {
+                // Fallback jika logo belum dimuat turun sepenuhnya
             }
 
-            // Lukis Bola-bola Kriket (Pelbagai Sudut)
-            for (let b of balls) {
-                if (b.active) {
-                    ctx.fillStyle = '#ef4444'; // Bola merah menyala
-                    ctx.beginPath();
-                    ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
-                    ctx.fill();
-                    // Garisan putih gaya bola kriket retro
-                    ctx.strokeStyle = '#ffffff';
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.arc(b.x, b.y, b.radius - 2, 0, Math.PI);
-                    ctx.stroke();
+            // Tingkap-tingkap Kelas (Bercahaya kemas)
+            ctx.fillStyle = '#38bdf8';
+            let winCols = 7, winRows = 2;
+            let startWX = bX + 35, startWY = bY + 75;
+            for (let r = 0; r < winRows; r++) {
+                for (let col = 0; col < winCols; col++) {
+                    ctx.fillRect(startWX + col * 48, startWY + r * 50, 28, 38);
                 }
             }
+
+            // Pintu Utama Bangunan
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(bX + bW / 2 - 25, bY + 125, 50, 60);
+
+            // 5. Lukis Pokok Bergoyang (Kiri & Kanan Bangunan)
+            swayAngle += 0.04;
+            let sway = Math.sin(swayAngle) * 0.08; // Sudut ayunan ditiup angin
+
+            drawTree(120, canvas.height - 40, sway);
+            drawTree(780, canvas.height - 40, -sway);
+
+            requestAnimationFrame(animateSchoolScene);
         }
 
-        function loop() {
-            if (!gameRunning) return;
-            update();
-            draw();
-            requestAnimationFrame(loop);
+        function drawTree(baseX, baseY, angle) {
+            ctx.save();
+            ctx.translate(baseX, baseY);
+            
+            // Batang Pokok
+            ctx.fillStyle = '#78350f';
+            ctx.fillRect(-6, -60, 12, 60);
+
+            // Daun Pokok Bergoyang
+            ctx.rotate(angle);
+            ctx.fillStyle = '#059669';
+            ctx.beginPath();
+            ctx.arc(0, -75, 35, 0, Math.PI * 2);
+            ctx.arc(-20, -60, 25, 0, Math.PI * 2);
+            ctx.arc(20, -60, 25, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.restore();
         }
 
-        function endGame() {
-            gameRunning = false;
-            overlayTitle.textContent = "PERMAINAN TAMAT";
-            overlayDesc.innerHTML = `Stump anda telah runtuh! Skor akhir anda: <b class="text-emerald-400">${score} markah</b>. Cuba sekali lagi untuk pertahankan stump!`;
-            overlay.classList.remove('hidden');
-        }
+        // Mulakan animasi apabila imej logo siap sedia atau terus jalan
+        schoolLogo.onload = () => {};
+        animateSchoolScene();
     </script>
 </body>
 </html>
