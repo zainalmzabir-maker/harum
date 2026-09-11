@@ -246,7 +246,7 @@
             <p class="text-slate-600 text-xs mt-1">Sila semak semula ejaan kata kunci carian anda.</p>
         </div>
 
-        <!-- MODUL TAMBAHAN: ARKED KRIKET MINI -->
+        <!-- MODUL TAMBAHAN: ARKED KRIKET (GAYA CHROME DINO) -->
         <section class="mt-8 pt-8 border-t border-slate-800">
             <div class="bg-slate-900/90 rounded-3xl border border-emerald-500/40 p-6 md:p-8 shadow-2xl relative overflow-hidden">
                 <div class="absolute -left-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -254,9 +254,9 @@
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 relative z-10">
                     <div>
                         <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-1">
-                            <i class="fa-solid fa-baseball-bat-ball"></i> Mod Santai Arked
+                            <i class="fa-solid fa-gamepad"></i> Mod Santai SEMEKAR Arcade
                         </div>
-                        <h2 class="text-2xl font-black text-white futuristic-font">ARKED KRIKET MINI</h2>
+                        <h2 class="text-2xl font-black text-white futuristic-font">ARKED KRIKET: DEFEND STUMP</h2>
                     </div>
                     <!-- Statistik Permainan -->
                     <div class="flex items-center gap-4 bg-slate-950 px-5 py-2.5 rounded-2xl border border-slate-800 text-xs font-mono">
@@ -266,23 +266,26 @@
                     </div>
                 </div>
 
-                <!-- Canvas Permainan Kriket -->
+                <!-- Canvas Permainan Gaya Google Chrome Dino -->
                 <div class="relative w-full max-w-2xl mx-auto bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden shadow-inner flex flex-col items-center justify-center">
-                    <canvas id="cricketCanvas" width="600" height="350" class="w-full h-auto cursor-pointer block"></canvas>
+                    <canvas id="cricketCanvas" width="600" height="320" class="w-full h-auto cursor-pointer block"></canvas>
                     
                     <!-- Lapisan Mula / Game Over Overlay -->
-                    <div id="cricketOverlay" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6 transition-all">
-                        <h3 id="overlayTitle" class="text-2xl font-black text-emerald-400 futuristic-font mb-2">ARKED KRIKET</h3>
-                        <p id="overlayDesc" class="text-slate-300 text-xs max-w-md mb-6 leading-relaxed">
-                            Gunakan butang anak tangga <b>Kiri & Kanan</b> (atau sentuh/leret skrin) untuk gerakkan pemukul. Elakkan bola daripada menghentam stump!
+                    <div id="cricketOverlay" class="absolute inset-0 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6 transition-all">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-3 border border-white/20">
+                            <i class="fa-solid fa-shield-halved text-xl text-emerald-400"></i>
+                        </div>
+                        <h3 id="overlayTitle" class="text-2xl font-black text-white futuristic-font mb-2 tracking-wide">ARKED KRIKET RETRO</h3>
+                        <p id="overlayDesc" class="text-slate-400 text-xs max-w-md mb-6 leading-relaxed">
+                            Gunakan kekunci <b>Panah Kiri & Kanan</b> untuk menggerakkan pemukul dan tekan <b>Spacebar</b> untuk memukul bola yang meluru dari pelbagai sudut sebelum ia merempuh stump!
                         </p>
-                        <button onclick="startCricketGame()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-900/50 futuristic-font transition transform hover:scale-105">
-                            Mula Main
+                        <button onclick="startCricketGame()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-900/50 futuristic-font transition transform hover:scale-105 border border-emerald-400/40">
+                            Mula Main (Space / Click)
                         </button>
                     </div>
                 </div>
                 <div class="text-center mt-3 text-[11px] text-slate-500 font-mono">
-                    Kawal: Kekunci Panah Kiri / Kanan atau Sentuh Skrin Kiri & Kanan
+                    Kawalan: Panah Kiri/Kanan (Gerak) | Spacebar / Klik (Ayun Pemukul)
                 </div>
             </div>
         </section>
@@ -353,7 +356,7 @@
 
         searchInput.addEventListener('input', filterApps);
 
-        // --- SKRIP PERMAINAN ARKED KRIKET MINI ---
+        // --- SKRIP PERMAINAN ARKED KRIKET (GAYA CHROME DINO & PELBAGAI SUDUT) ---
         const canvas = document.getElementById('cricketCanvas');
         const ctx = canvas.getContext('2d');
         const scoreEl = document.getElementById('cricketScore');
@@ -365,184 +368,226 @@
         let gameRunning = false;
         let score = 0;
         let lives = 3;
-        let ballSpeed = 2.5;
+        let gameSpeed = 2;
 
-        // Entiti Pemukul (Bat) & Bola & Stump
-        let bat = { x: 270, y: 310, width: 60, height: 12, speed: 8, dx: 0 };
-        let stumps = { x: 285, y: 300, width: 30, height: 25, collapsed: false };
-        let ball = { x: 300, y: 40, radius: 8, speedY: 0, speedX: 0, active: false };
+        // Entiti Batter, Stumps & Balls
+        let stumps = { x: 285, y: 250, width: 30, height: 40, collapsed: false };
+        let batter = { x: 275, y: 240, width: 50, height: 12, vx: 0, swinging: false, swingTimer: 0 };
+        let balls = [];
+        let spawnTimer = 0;
 
-        let keys = { left: false, right: false };
+        let keys = { left: false, right: false, swing: false };
 
         window.addEventListener('keydown', (e) => {
-            if(e.key === 'ArrowLeft' || e.key === 'a') keys.left = true;
-            if(e.key === 'ArrowRight' || e.key === 'd') keys.right = true;
-        });
-        window.addEventListener('keyup', (e) => {
-            if(e.key === 'ArrowLeft' || e.key === 'a') keys.left = false;
-            if(e.key === 'ArrowRight' || e.key === 'd') keys.right = false;
+            if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = true;
+            if (e.key === 'ArrowRight' || e.key === 'd') keys.right = true;
+            if (e.key === ' ' || e.key === 'ArrowUp') {
+                keys.swing = true;
+                if (!gameRunning && !overlay.classList.contains('hidden')) {
+                    startCricketGame();
+                }
+            }
         });
 
-        // Kawalan Sentuhan Mudah Alih
-        canvas.addEventListener('mousemove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            let mouseX = e.clientX - rect.left;
-            bat.x = mouseX - bat.width / 2;
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'a') keys.left = false;
+            if (e.key === 'ArrowRight' || e.key === 'd') keys.right = false;
+            if (e.key === ' ' || e.key === 'ArrowUp') keys.swing = false;
         });
-        canvas.addEventListener('touchmove', (e) => {
-            const rect = canvas.getBoundingClientRect();
-            let touchX = e.touches[0].clientX - rect.left;
-            bat.x = touchX - bat.width / 2;
-            e.preventDefault();
-        }, { passive: false });
+
+        // Sentuhan skrin untuk telefon pintar
+        canvas.addEventListener('click', () => {
+            keys.swing = true;
+            setTimeout(() => keys.swing = false, 150);
+        });
 
         function startCricketGame() {
             score = 0;
             lives = 3;
-            ballSpeed = 3;
+            gameSpeed = 2.2;
+            balls = [];
             stumps.collapsed = false;
             scoreEl.textContent = score;
             livesEl.textContent = '❤️❤️❤️';
             overlay.classList.add('hidden');
             gameRunning = true;
-            resetBall();
             loop();
         }
 
-        function resetBall() {
-            ball.x = Math.random() * (canvas.width - 100) + 50;
-            ball.y = 30;
-            ball.active = true;
-            // Arah bola menuju ke arah stump/bat secara rawak sedikit
+        function spawnBall() {
+            // Bola datang dari pelbagai sudut di bahagian atas (kiri, tengah, kanan)
+            let startX = Math.random() * (canvas.width - 100) + 50;
+            let startY = -10;
             let targetX = stumps.x + stumps.width / 2 + (Math.random() * 40 - 20);
-            let dy = bat.y - ball.y;
-            let dx = targetX - ball.x;
-            let angle = Math.atan2(dy, dx);
-            ball.speedY = Math.sin(angle) * ballSpeed;
-            ball.speedX = Math.cos(angle) * ballSpeed;
+            let targetY = stumps.y + 10;
+
+            let angle = Math.atan2(targetY - startY, targetX - startX);
+            let vx = Math.cos(angle) * gameSpeed;
+            let vy = Math.sin(angle) * gameSpeed;
+
+            balls.push({
+                x: startX,
+                y: startY,
+                vx: vx,
+                vy: vy,
+                radius: 6,
+                active: true
+            });
         }
 
         function update() {
             if (!gameRunning) return;
 
-            // Gerak Pemukul ikut keyboard
-            if (keys.left) bat.x -= bat.speed;
-            if (keys.right) bat.x += bat.speed;
+            // Kawalan Gerak Batter ke kiri & kanan
+            if (keys.left) batter.x -= 5;
+            if (keys.right) batter.x += 5;
 
-            // Had sempadan kanvas pemukul
-            if (bat.x < 0) bat.x = 0;
-            if (bat.x + bat.width > canvas.width) bat.x = canvas.width - bat.width;
+            // Had sempadan kanvas
+            if (batter.x < 150) batter.x = 150;
+            if (batter.x + batter.width > canvas.width - 150) batter.x = canvas.width - 150;
 
-            if (ball.active) {
-                ball.y += ball.speedY;
-                ball.x += ball.speedX;
+            // Proses Swing Pemukul
+            if (keys.swing && !batter.swinging) {
+                batter.swinging = true;
+                batter.swingTimer = 12; // tempoh bingkai ayunan
+            }
+            if (batter.swinging) {
+                batter.swingTimer--;
+                if (batter.swingTimer <= 0) batter.swinging = false;
+            }
 
-                // Semak perlanggaran dengan Pemukul (Bat)
+            // Spawn bola baru secara beransur-ansur
+            spawnTimer++;
+            let spawnInterval = Math.max(40, 100 - Math.floor(score / 50)); // Semakin tinggi skor, semakin kerap bola muncul
+            if (spawnTimer >= spawnInterval) {
+                spawnBall();
+                spawnTimer = 0;
+            }
+
+            // Kemas kini kedudukan bola
+            for (let i = balls.length - 1; i >= 0; i--) {
+                let b = balls[i];
+                b.x += b.vx;
+                b.y += b.vy;
+
+                // Semak perlanggaran dengan Pemukul (Bat) semasa ayunan
+                let batHitbox = {
+                    x: batter.x - (batter.swinging ? 10 : 0),
+                    y: batter.y - 5,
+                    width: batter.width + (batter.swinging ? 20 : 0),
+                    height: batter.height + 10
+                };
+
                 if (
-                    ball.y + ball.radius >= bat.y &&
-                    ball.y - ball.radius <= bat.y + bat.height &&
-                    ball.x >= bat.x &&
-                    ball.x <= bat.x + bat.width
+                    b.active &&
+                    b.x >= batHitbox.x &&
+                    b.x <= batHitbox.x + batHitbox.width &&
+                    b.y >= batHitbox.y &&
+                    b.y <= batHitbox.y + batHitbox.height
                 ) {
-                    // Pukul bola naik semula
-                    ball.speedY = -Math.abs(ball.speedY) * 1.05; // Tambah kelajuan pantulan
+                    // Bola berjaya dipukul keluar!
+                    b.active = false;
                     score += 10;
                     scoreEl.textContent = score;
-                    ballSpeed += 0.15; // Tambah kelajuan keseluruhan perlahan-lahan
+                    gameSpeed += 0.05; // Tambah kelajuan permainan secara progresif
                 }
 
-                // Semak jika bola kena Stump (Terlepas)
-                if (ball.y >= stumps.y && !stumps.collapsed) {
-                    if (
-                        ball.x >= stumps.x - 10 &&
-                        ball.x <= stumps.x + stumps.width + 10
-                    ) {
-                        // Kena Stump!
-                        stumps.collapsed = true;
-                        ball.active = false;
-                        lives -= 1;
-                        updateLivesDisplay();
-
-                        if (lives > 0) {
-                            setTimeout(() => {
-                                stumps.collapsed = false;
-                                resetBall();
-                            }, 1000);
-                        } else {
-                            endGame();
-                        }
-                    }
-                }
-
-                // Jika bola terlepas keluar bawah kanvas tanpa kena stump (dikira lepas juga)
-                if (ball.y > canvas.height + 20 && ball.active) {
-                    ball.active = false;
-                    lives -= 1;
+                // Semak jika bola menghentam stump
+                if (
+                    b.active &&
+                    !stumps.collapsed &&
+                    b.x >= stumps.x - 5 &&
+                    b.x <= stumps.x + stumps.width + 5 &&
+                    b.y >= stumps.y &&
+                    b.y <= stumps.y + stumps.height
+                ) {
+                    b.active = false;
+                    stumps.collapsed = true;
+                    lives--;
                     updateLivesDisplay();
+
                     if (lives > 0) {
-                        setTimeout(() => resetBall(), 1000);
+                        setTimeout(() => {
+                            stumps.collapsed = false;
+                            balls = []; // Kosongkan bola semasa reset nyawa
+                        }, 800);
                     } else {
                         endGame();
                     }
+                }
+
+                // Buang bola yang keluar dari skrin
+                if (b.y > canvas.height + 20 || b.x < -20 || b.x > canvas.width + 20) {
+                    balls.splice(i, 1);
                 }
             }
         }
 
         function updateLivesDisplay() {
             let hearts = '';
-            for(let i=0; i<lives; i++) hearts += '❤️';
+            for (let i = 0; i < lives; i++) hearts += '❤️';
             livesEl.textContent = hearts;
         }
 
         function draw() {
-            // Latar belakang padang kriket arked
-            ctx.fillStyle = '#022c22';
+            // Grafik gaya retro monochrome / hitam putih bersih ala Google Chrome Dino
+            ctx.fillStyle = '#020617'; // Latar belakang gelap pekat
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Garisan Pitch Kriket
-            ctx.strokeStyle = '#047857';
-            ctx.lineWidth = 4;
+            // Garisan Pitch & Grid Minimalis (Gaya Retro Vector)
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineWidth = 2;
             ctx.beginPath();
-            ctx.moveTo(canvas.width / 2 - 40, 0);
-            ctx.lineTo(canvas.width / 2 - 60, canvas.height);
-            ctx.moveTo(canvas.width / 2 + 40, 0);
-            ctx.lineTo(canvas.width / 2 + 60, canvas.height);
+            ctx.moveTo(canvas.width / 2, 0);
+            ctx.lineTo(canvas.width / 2, canvas.height);
             ctx.stroke();
 
-            // Lukis Stump
-            ctx.fillStyle = stumps.collapsed ? '#ef4444' : '#e2e8f0';
+            // Lukis Stumps (Gaya Siluet Putih Bersih)
+            ctx.fillStyle = stumps.collapsed ? '#ef4444' : '#f8fafc';
             if (!stumps.collapsed) {
                 ctx.fillRect(stumps.x, stumps.y, 6, stumps.height);
                 ctx.fillRect(stumps.x + 12, stumps.y, 6, stumps.height);
                 ctx.fillRect(stumps.x + 24, stumps.y, 6, stumps.height);
+                // Bails di atas stump
+                ctx.fillRect(stumps.x - 2, stumps.y - 4, 32, 4);
             } else {
-                // Runtuh
+                // Animasi runtuh stump
                 ctx.save();
-                ctx.translate(stumps.x + 15, stumps.y + 15);
-                ctx.rotate(Math.PI / 2);
-                ctx.fillRect(-10, -15, 30, 6);
+                ctx.translate(stumps.x + 15, stumps.y + 20);
+                ctx.rotate(Math.PI / 2.5);
+                ctx.fillRect(-15, -20, 35, 6);
                 ctx.restore();
             }
 
-            // Lukis Pemukul (Bat)
-            ctx.fillStyle = '#d97706';
-            ctx.fillRect(bat.x, bat.y, bat.width, bat.height);
-            // Pemegang bat
-            ctx.fillStyle = '#94a3b8';
-            ctx.fillRect(bat.x + bat.width / 2 - 4, bat.y - 8, 8, 10);
+            // Lukis Batter & Pemukul (Siluet Retro Pixel/Vector)
+            ctx.fillStyle = '#10b981'; // Hijau neon SEMEKAR
+            // Badan batter
+            ctx.fillRect(batter.x + 15, batter.y - 20, 20, 25);
+            // Kepala batter
+            ctx.fillRect(batter.x + 18, batter.y - 32, 14, 10);
+            
+            // Pemukul (Bat) - Bergerak dinamik apabila swing
+            ctx.fillStyle = '#f8fafc';
+            if (batter.swinging) {
+                ctx.fillRect(batter.x - 5, batter.y - 10, batter.width + 10, 8);
+            } else {
+                ctx.fillRect(batter.x + 35, batter.y - 15, 8, 25);
+            }
 
-            // Lukis Bola Kriket Merah
-            if (ball.active) {
-                ctx.fillStyle = '#ef4444';
-                ctx.beginPath();
-                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-                ctx.fill();
-                // Jalur putih bola kriket
-                ctx.strokeStyle = '#ffffff';
-                ctx.lineWidth = 1.5;
-                ctx.beginPath();
-                ctx.arc(ball.x, ball.y, ball.radius - 2, 0, Math.PI);
-                ctx.stroke();
+            // Lukis Bola-bola Kriket (Pelbagai Sudut)
+            for (let b of balls) {
+                if (b.active) {
+                    ctx.fillStyle = '#ef4444'; // Bola merah menyala
+                    ctx.beginPath();
+                    ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                    // Garisan putih gaya bola kriket retro
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.arc(b.x, b.y, b.radius - 2, 0, Math.PI);
+                    ctx.stroke();
+                }
             }
         }
 
@@ -556,7 +601,7 @@
         function endGame() {
             gameRunning = false;
             overlayTitle.textContent = "PERMAINAN TAMAT";
-            overlayDesc.innerHTML = `Tahniah! Anda berjaya mengumpul skor: <b class="text-emerald-400">${score} markah</b>. Cuba lagi untuk pecahkan rekod!`;
+            overlayDesc.innerHTML = `Stump anda telah runtuh! Skor akhir anda: <b class="text-emerald-400">${score} markah</b>. Cuba sekali lagi untuk pertahankan stump!`;
             overlay.classList.remove('hidden');
         }
     </script>
