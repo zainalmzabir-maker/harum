@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARUM - SMK Kamarul Ariffin</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+    
+    <!-- Header / Banner Portal -->
+    <header class="bg-emerald-800 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                <!-- Ruang Logo Sekolah -->
+                <div class="bg-white p-2 rounded-xl shadow flex items-center justify-center w-14 h-14">
+                    <img src="logo.png" alt="Logo SMK Kamarul Ariffin" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/10b981/ffffff?text=SMKKA';">
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold tracking-tight">HARUM</h1>
+                    <p class="text-emerald-200 text-xs md:text-sm">Hab Automasi Rekod & Urus Maklumat — SMK Kamarul Ariffin</p>
+                </div>
+            </div>
+            <!-- Kotak Carian Pantas -->
+            <div class="w-full md:w-72">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-300">
+                        <i class="fa-solid fa-search"></i>
+                    </span>
+                    <input type="text" id="searchApp" placeholder="Cari aplikasi..." class="w-full pl-10 pr-4 py-2 bg-emerald-900/65 border border-emerald-600 rounded-lg text-white placeholder-emerald-300 focus:outline-none focus:ring-2 focus:ring-white text-sm">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Kandungan Utama -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 w-full">
+        
+        <!-- Butang Penapis Kategori -->
+        <div class="flex flex-wrap gap-2 mb-8 justify-center md:justify-start" id="filterButtons">
+            <button onclick="filterCategory('all')" class="filter-btn px-4 py-2 bg-emerald-700 text-white rounded-lg shadow text-sm font-medium transition hover:bg-emerald-800 active-btn">Semua</button>
+            <button onclick="filterCategory('Pentadbiran')" class="filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100">Pentadbiran</button>
+            <button onclick="filterCategory('Kurikulum')" class="filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100">Kurikulum</button>
+            <button onclick="filterCategory('HEM')" class="filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100">Hal Ehwal Murid</button>
+            <button onclick="filterCategory('KoKurikulum')" class="filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100">KoKurikulum</button>
+        </div>
+
+        <!-- Senarai Kad Aplikasi -->
+        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- 1. Pentadbiran -->
+            <div class="app-card bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">Pentadbiran</span>
+                        <i class="fa-solid fa-screwdriver-wrench text-blue-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Laporan Kerosakan</h3>
+                    <p class="text-slate-600 text-sm mb-4">Sistem pelaporan dan pengurusan kerosakan fasiliti sekolah dengan pantas.</p>
+                </div>
+                <div>
+                    <div class="text-xs text-slate-400 mb-3 truncate font-mono">rosak.semekar.com</div>
+                    <a href="https://rosak.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition text-sm">
+                        <span>Buka Aplikasi</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. Kurikulum -->
+            <div class="app-card bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition" data-category="Kurikulum" data-name="pengurusan headcount headcount.semekar.com kurikulum">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">Kurikulum</span>
+                        <i class="fa-solid fa-chart-line text-emerald-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Pengurusan Headcount</h3>
+                    <p class="text-slate-600 text-sm mb-4">Analisis prestasi akademik, sasaran pencapaian, dan headcount murid.</p>
+                </div>
+                <div>
+                    <div class="text-xs text-slate-400 mb-3 truncate font-mono">headcount.semekar.com</div>
+                    <a href="https://headcount.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg transition text-sm">
+                        <span>Buka Aplikasi</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. Hal Ehwal Murid -->
+            <div class="app-card bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition" data-category="HEM" data-name="pelaporan kehadiran murid hadir.semekar.com hem hal ehwal murid">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full">Hal Ehwal Murid</span>
+                        <i class="fa-solid fa-user-check text-amber-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Pelaporan Kehadiran Murid</h3>
+                    <p class="text-slate-600 text-sm mb-4">Sistem rekod, pemantauan, dan statistik kehadiran harian murid.</p>
+                </div>
+                <div>
+                    <div class="text-xs text-slate-400 mb-3 truncate font-mono">hadir.semekar.com</div>
+                    <a href="https://hadir.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-amber-600 hover:bg-amber-700 text-white font-medium py-2 px-4 rounded-lg transition text-sm">
+                        <span>Buka Aplikasi</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4. KoKurikulum -->
+            <div class="app-card bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-md transition" data-category="KoKurikulum" data-name="pelaporan aktiviti kokurikulum koku.semekar.com">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-purple-50 text-purple-700 text-xs font-semibold rounded-full">KoKurikulum</span>
+                        <i class="fa-solid fa-medal text-purple-500 text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">Pelaporan Aktiviti KoKurikulum</h3>
+                    <p class="text-slate-600 text-sm mb-4">Dokumentasi aktiviti unit beruniform, kelab, persatuan, dan sukan permainan.</p>
+                </div>
+                <div>
+                    <div class="text-xs text-slate-400 mb-3 truncate font-mono">koku.semekar.com</div>
+                    <a href="https://koku.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition text-sm">
+                        <span>Buka Aplikasi</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Mesej jika carian tidak jumpa -->
+        <div id="noResults" class="hidden text-center py-12">
+            <i class="fa-solid fa-face-sad-tear text-slate-300 text-5xl mb-3"></i>
+            <p class="text-slate-500 text-lg font-medium">Tiada aplikasi sepadan ditemui.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
+            <p>&copy; 2026 <strong>HARUM</strong> - SMK Kamarul Ariffin. Dihoskan secara percuma melalui GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <!-- Skrip Fungsi Carian & Penapisan -->
+    <script>
+        const searchInput = document.getElementById('searchApp');
+        const appCards = document.querySelectorAll('.app-card');
+        const noResults = document.getElementById('noResults');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        let currentCategory = 'all';
+
+        function filterCategory(category) {
+            currentCategory = category;
+            
+            filterButtons.forEach(btn => {
+                if(btn.textContent.includes(category === 'all' ? 'Semua' : category)) {
+                    btn.className = "filter-btn px-4 py-2 bg-emerald-700 text-white rounded-lg shadow text-sm font-medium transition hover:bg-emerald-800";
+                } else {
+                    btn.className = "filter-btn px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-lg shadow-sm text-sm font-medium transition hover:bg-slate-100";
+                }
+            });
+
+            filterApps();
+        }
+
+        function filterApps() {
+            const query = searchInput.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            appCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                const name = card.getAttribute('data-name');
+                
+                const matchesCategory = (currentCategory === 'all' || category === currentCategory);
+                const matchesQuery = name.includes(query);
+
+                if (matchesCategory && matchesQuery) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        }
+
+        searchInput.addEventListener('input', filterApps);
+    </script>
+</body>
+</html>
