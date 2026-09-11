@@ -117,7 +117,7 @@
         </div>
 
         <!-- Senarai Kad Sistem -->
-        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             
             <!-- 1. Pentadbiran -->
             <div class="app-card bg-slate-900/90 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-emerald-500/60 card-glow transition-all duration-300 transform hover:-translate-y-2 relative group overflow-hidden" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
@@ -238,13 +238,55 @@
         </div>
 
         <!-- Mesej jika tiada sistem dijumpai -->
-        <div id="noResults" class="hidden text-center py-20">
+        <div id="noResults" class="hidden text-center py-20 mb-16">
             <div class="inline-block p-4 rounded-full bg-slate-900 border border-slate-800 mb-4 text-emerald-400">
                 <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
             </div>
             <p class="text-slate-400 text-base font-semibold futuristic-font">TIADA SISTEM DIJUMPAI</p>
             <p class="text-slate-600 text-xs mt-1">Sila semak semula ejaan kata kunci carian anda.</p>
         </div>
+
+        <!-- MODUL TAMBAHAN: ARKED KRIKET MINI -->
+        <section class="mt-8 pt-8 border-t border-slate-800">
+            <div class="bg-slate-900/90 rounded-3xl border border-emerald-500/40 p-6 md:p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute -left-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 relative z-10">
+                    <div>
+                        <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-1">
+                            <i class="fa-solid fa-baseball-bat-ball"></i> Mod Santai Arked
+                        </div>
+                        <h2 class="text-2xl font-black text-white futuristic-font">ARKED KRIKET MINI</h2>
+                    </div>
+                    <!-- Statistik Permainan -->
+                    <div class="flex items-center gap-4 bg-slate-950 px-5 py-2.5 rounded-2xl border border-slate-800 text-xs font-mono">
+                        <div>SKOR: <span id="cricketScore" class="text-emerald-400 font-bold text-sm">0</span></div>
+                        <div class="text-slate-700">|</div>
+                        <div>NYAWA: <span id="cricketLives" class="text-red-400 font-bold text-sm">❤️❤️❤️</span></div>
+                    </div>
+                </div>
+
+                <!-- Canvas Permainan Kriket -->
+                <div class="relative w-full max-w-2xl mx-auto bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden shadow-inner flex flex-col items-center justify-center">
+                    <canvas id="cricketCanvas" width="600" height="350" class="w-full h-auto cursor-pointer block"></canvas>
+                    
+                    <!-- Lapisan Mula / Game Over Overlay -->
+                    <div id="cricketOverlay" class="absolute inset-0 bg-slate-950/85 backdrop-blur-sm flex flex-col items-center justify-center text-center p-6 transition-all">
+                        <h3 id="overlayTitle" class="text-2xl font-black text-emerald-400 futuristic-font mb-2">ARKED KRIKET</h3>
+                        <p id="overlayDesc" class="text-slate-300 text-xs max-w-md mb-6 leading-relaxed">
+                            Gunakan butang anak tangga <b>Kiri & Kanan</b> (atau sentuh/leret skrin) untuk gerakkan pemukul. Elakkan bola daripada menghentam stump!
+                        </p>
+                        <button onclick="startCricketGame()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-lg shadow-emerald-900/50 futuristic-font transition transform hover:scale-105">
+                            Mula Main
+                        </button>
+                    </div>
+                </div>
+                <div class="text-center mt-3 text-[11px] text-slate-500 font-mono">
+                    Kawal: Kekunci Panah Kiri / Kanan atau Sentuh Skrin Kiri & Kanan
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer Portal -->
@@ -310,6 +352,213 @@
         }
 
         searchInput.addEventListener('input', filterApps);
+
+        // --- SKRIP PERMAINAN ARKED KRIKET MINI ---
+        const canvas = document.getElementById('cricketCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreEl = document.getElementById('cricketScore');
+        const livesEl = document.getElementById('cricketLives');
+        const overlay = document.getElementById('cricketOverlay');
+        const overlayTitle = document.getElementById('overlayTitle');
+        const overlayDesc = document.getElementById('overlayDesc');
+
+        let gameRunning = false;
+        let score = 0;
+        let lives = 3;
+        let ballSpeed = 2.5;
+
+        // Entiti Pemukul (Bat) & Bola & Stump
+        let bat = { x: 270, y: 310, width: 60, height: 12, speed: 8, dx: 0 };
+        let stumps = { x: 285, y: 300, width: 30, height: 25, collapsed: false };
+        let ball = { x: 300, y: 40, radius: 8, speedY: 0, speedX: 0, active: false };
+
+        let keys = { left: false, right: false };
+
+        window.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowLeft' || e.key === 'a') keys.left = true;
+            if(e.key === 'ArrowRight' || e.key === 'd') keys.right = true;
+        });
+        window.addEventListener('keyup', (e) => {
+            if(e.key === 'ArrowLeft' || e.key === 'a') keys.left = false;
+            if(e.key === 'ArrowRight' || e.key === 'd') keys.right = false;
+        });
+
+        // Kawalan Sentuhan Mudah Alih
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            let mouseX = e.clientX - rect.left;
+            bat.x = mouseX - bat.width / 2;
+        });
+        canvas.addEventListener('touchmove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            let touchX = e.touches[0].clientX - rect.left;
+            bat.x = touchX - bat.width / 2;
+            e.preventDefault();
+        }, { passive: false });
+
+        function startCricketGame() {
+            score = 0;
+            lives = 3;
+            ballSpeed = 3;
+            stumps.collapsed = false;
+            scoreEl.textContent = score;
+            livesEl.textContent = '❤️❤️❤️';
+            overlay.classList.add('hidden');
+            gameRunning = true;
+            resetBall();
+            loop();
+        }
+
+        function resetBall() {
+            ball.x = Math.random() * (canvas.width - 100) + 50;
+            ball.y = 30;
+            ball.active = true;
+            // Arah bola menuju ke arah stump/bat secara rawak sedikit
+            let targetX = stumps.x + stumps.width / 2 + (Math.random() * 40 - 20);
+            let dy = bat.y - ball.y;
+            let dx = targetX - ball.x;
+            let angle = Math.atan2(dy, dx);
+            ball.speedY = Math.sin(angle) * ballSpeed;
+            ball.speedX = Math.cos(angle) * ballSpeed;
+        }
+
+        function update() {
+            if (!gameRunning) return;
+
+            // Gerak Pemukul ikut keyboard
+            if (keys.left) bat.x -= bat.speed;
+            if (keys.right) bat.x += bat.speed;
+
+            // Had sempadan kanvas pemukul
+            if (bat.x < 0) bat.x = 0;
+            if (bat.x + bat.width > canvas.width) bat.x = canvas.width - bat.width;
+
+            if (ball.active) {
+                ball.y += ball.speedY;
+                ball.x += ball.speedX;
+
+                // Semak perlanggaran dengan Pemukul (Bat)
+                if (
+                    ball.y + ball.radius >= bat.y &&
+                    ball.y - ball.radius <= bat.y + bat.height &&
+                    ball.x >= bat.x &&
+                    ball.x <= bat.x + bat.width
+                ) {
+                    // Pukul bola naik semula
+                    ball.speedY = -Math.abs(ball.speedY) * 1.05; // Tambah kelajuan pantulan
+                    score += 10;
+                    scoreEl.textContent = score;
+                    ballSpeed += 0.15; // Tambah kelajuan keseluruhan perlahan-lahan
+                }
+
+                // Semak jika bola kena Stump (Terlepas)
+                if (ball.y >= stumps.y && !stumps.collapsed) {
+                    if (
+                        ball.x >= stumps.x - 10 &&
+                        ball.x <= stumps.x + stumps.width + 10
+                    ) {
+                        // Kena Stump!
+                        stumps.collapsed = true;
+                        ball.active = false;
+                        lives -= 1;
+                        updateLivesDisplay();
+
+                        if (lives > 0) {
+                            setTimeout(() => {
+                                stumps.collapsed = false;
+                                resetBall();
+                            }, 1000);
+                        } else {
+                            endGame();
+                        }
+                    }
+                }
+
+                // Jika bola terlepas keluar bawah kanvas tanpa kena stump (dikira lepas juga)
+                if (ball.y > canvas.height + 20 && ball.active) {
+                    ball.active = false;
+                    lives -= 1;
+                    updateLivesDisplay();
+                    if (lives > 0) {
+                        setTimeout(() => resetBall(), 1000);
+                    } else {
+                        endGame();
+                    }
+                }
+            }
+        }
+
+        function updateLivesDisplay() {
+            let hearts = '';
+            for(let i=0; i<lives; i++) hearts += '❤️';
+            livesEl.textContent = hearts;
+        }
+
+        function draw() {
+            // Latar belakang padang kriket arked
+            ctx.fillStyle = '#022c22';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Garisan Pitch Kriket
+            ctx.strokeStyle = '#047857';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(canvas.width / 2 - 40, 0);
+            ctx.lineTo(canvas.width / 2 - 60, canvas.height);
+            ctx.moveTo(canvas.width / 2 + 40, 0);
+            ctx.lineTo(canvas.width / 2 + 60, canvas.height);
+            ctx.stroke();
+
+            // Lukis Stump
+            ctx.fillStyle = stumps.collapsed ? '#ef4444' : '#e2e8f0';
+            if (!stumps.collapsed) {
+                ctx.fillRect(stumps.x, stumps.y, 6, stumps.height);
+                ctx.fillRect(stumps.x + 12, stumps.y, 6, stumps.height);
+                ctx.fillRect(stumps.x + 24, stumps.y, 6, stumps.height);
+            } else {
+                // Runtuh
+                ctx.save();
+                ctx.translate(stumps.x + 15, stumps.y + 15);
+                ctx.rotate(Math.PI / 2);
+                ctx.fillRect(-10, -15, 30, 6);
+                ctx.restore();
+            }
+
+            // Lukis Pemukul (Bat)
+            ctx.fillStyle = '#d97706';
+            ctx.fillRect(bat.x, bat.y, bat.width, bat.height);
+            // Pemegang bat
+            ctx.fillStyle = '#94a3b8';
+            ctx.fillRect(bat.x + bat.width / 2 - 4, bat.y - 8, 8, 10);
+
+            // Lukis Bola Kriket Merah
+            if (ball.active) {
+                ctx.fillStyle = '#ef4444';
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                ctx.fill();
+                // Jalur putih bola kriket
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius - 2, 0, Math.PI);
+                ctx.stroke();
+            }
+        }
+
+        function loop() {
+            if (!gameRunning) return;
+            update();
+            draw();
+            requestAnimationFrame(loop);
+        }
+
+        function endGame() {
+            gameRunning = false;
+            overlayTitle.textContent = "PERMAINAN TAMAT";
+            overlayDesc.innerHTML = `Tahniah! Anda berjaya mengumpul skor: <b class="text-emerald-400">${score} markah</b>. Cuba lagi untuk pecahkan rekod!`;
+            overlay.classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
