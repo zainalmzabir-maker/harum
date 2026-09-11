@@ -34,7 +34,6 @@
     
     <!-- Header / Hab Pengisian Maklumat -->
     <header class="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 border-b border-emerald-500/30 shadow-2xl relative overflow-hidden">
-        <!-- Elemen Latar Belakang Digital Grid -->
         <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#10b981_1px,transparent_1px),linear-gradient(to_bottom,#10b981_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         <div class="absolute -right-32 -top-32 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -left-32 -bottom-32 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -74,10 +73,8 @@
 
             <!-- Grafik Tipografi Futuristik "HARUM" (Merentang Penuh Horizontal) -->
             <div class="relative w-full py-4 px-6 bg-slate-950/70 backdrop-blur-md border-y border-emerald-500/40 rounded-2xl overflow-hidden shadow-[inset_0_0_20px_rgba(16,185,129,0.15)] flex flex-col items-center justify-center text-center">
-                <!-- Garisan Cahaya Latar Belakang -->
                 <div class="absolute inset-0 bg-[linear-gradient(90deg,transparent_0%,rgba(16,185,129,0.1)_50%,transparent_100%)]"></div>
                 
-                <!-- Teks Merentang Lebar Penuh (Horizontal Stretch) -->
                 <div class="w-full flex justify-between items-center text-emerald-400 font-black futuristic-font text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter select-none futuristic-text px-2">
                     <span class="hover:text-cyan-300 hover:scale-105 transition duration-300 cursor-default">H</span>
                     <span class="hover:text-cyan-300 hover:scale-105 transition duration-300 cursor-default">A</span>
@@ -86,7 +83,6 @@
                     <span class="hover:text-cyan-300 hover:scale-105 transition duration-300 cursor-default">M</span>
                 </div>
 
-                <!-- Keterangan Penuh HARUM di Bawah Grafiknya -->
                 <div class="mt-1 relative z-10">
                     <p class="text-xs sm:text-sm md:text-base font-semibold tracking-widest text-emerald-200/90 uppercase futuristic-font">
                         Hab Automasi Rekod &amp; Urus Maklumat
@@ -117,7 +113,7 @@
         </div>
 
         <!-- Senarai Kad Sistem -->
-        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             
             <!-- 1. Pentadbiran -->
             <div class="app-card bg-slate-900/90 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between hover:border-emerald-500/60 card-glow transition-all duration-300 transform hover:-translate-y-2 relative group overflow-hidden" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
@@ -238,7 +234,7 @@
         </div>
 
         <!-- Mesej jika tiada sistem dijumpai -->
-        <div id="noResults" class="hidden text-center py-20 mb-16">
+        <div id="noResults" class="hidden text-center py-16 mb-12">
             <div class="inline-block p-4 rounded-full bg-slate-900 border border-slate-800 mb-4 text-emerald-400">
                 <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
             </div>
@@ -246,43 +242,43 @@
             <p class="text-slate-600 text-xs mt-1">Sila semak semula ejaan kata kunci carian anda.</p>
         </div>
 
-        <!-- SEKSYEN GRAFIK SEKOLAH & CUACA TERKINI -->
-        <section class="mt-12 pt-8 border-t border-slate-800">
-            <div class="bg-slate-900/90 rounded-3xl border border-emerald-500/40 p-6 md:p-8 shadow-2xl relative overflow-hidden">
+        <!-- SEKSYEN GRAFIK PIXELATE SEKOLAH & CUACA TERKINI -->
+        <section class="mt-8 pt-6 border-t border-slate-800">
+            <div class="bg-slate-900/90 rounded-3xl border border-emerald-500/40 p-4 md:p-6 shadow-2xl relative overflow-hidden">
                 <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
                 <!-- Header Seksyen & HUD Cuaca Labis -->
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-6 relative z-10">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-4 relative z-10">
                     <div>
                         <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-1">
                             <i class="fa-solid fa-school"></i> Suasana Kampus Sekolah
                         </div>
-                        <h2 class="text-2xl font-black text-white futuristic-font">SMK KAMARUL ARIFFIN, LABIS</h2>
+                        <h2 class="text-xl font-black text-white futuristic-font">SMK KAMARUL ARIFFIN, LABIS</h2>
                     </div>
 
-                    <!-- Panel HUD Cuaca Semasa (Labis, Johor) -->
-                    <div class="flex items-center gap-4 bg-slate-950 px-5 py-3 rounded-2xl border border-slate-800 text-xs font-mono shadow-inner">
+                    <!-- Panel HUD Cuaca Semasa (Labis, Johor) - Sumber Data Rasmi -->
+                    <div class="flex items-center gap-4 bg-slate-950 px-4 py-2 rounded-xl border border-slate-800 text-xs font-mono shadow-inner">
                         <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-cloud text-slate-400 text-base"></i>
+                            <i class="fa-solid fa-cloud text-slate-400 text-sm"></i>
                             <div>
-                                <div class="text-[10px] text-slate-500 uppercase">Cuaca Labis</div>
+                                <div class="text-[9px] text-slate-500 uppercase">Cuaca Labis</div>
                                 <div class="text-emerald-400 font-bold">24°C • Berawan / Mendung</div>
                             </div>
                         </div>
-                        <div class="h-6 w-[1px] bg-slate-800"></div>
+                        <div class="h-5 w-[1px] bg-slate-800"></div>
                         <div>
-                            <div class="text-[10px] text-slate-500 uppercase">Kelembapan</div>
+                            <div class="text-[9px] text-slate-500 uppercase">Kelembapan</div>
                             <div class="text-slate-300 font-bold">94%</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Paparan Animasi Canvas Sekolah (Pokok Bergoyang, Burung Berterbangan, Logo, SEMEKAR, Awan Mendung) -->
+                <!-- Paparan Animasi Canvas Pixelate (Pendek Mendatar & Tenang) -->
                 <div class="relative w-full rounded-2xl border border-slate-800 overflow-hidden shadow-inner bg-slate-950 flex flex-col items-center justify-center">
-                    <canvas id="schoolCanvas" width="900" height="340" class="w-full h-auto block"></canvas>
+                    <canvas id="schoolCanvas" width="1000" height="130" class="w-full h-auto block" style="image-rendering: pixelated;"></canvas>
                     
-                    <div class="absolute bottom-3 left-4 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-lg border border-slate-800 text-[10px] font-mono text-slate-400">
-                        <i class="fa-solid fa-circle text-emerald-400 animate-pulse mr-1"></i> Live Atmospheric Feed: Labis, Johor
+                    <div class="absolute bottom-2 left-3 bg-slate-900/85 backdrop-blur-md px-2.5 py-0.5 rounded border border-slate-800 text-[9px] font-mono text-slate-400">
+                        <i class="fa-solid fa-circle text-emerald-400 animate-pulse mr-1"></i> Pixel Arcade Feed: Labis, Johor
                     </div>
                 </div>
             </div>
@@ -303,7 +299,7 @@
         </div>
     </footer>
 
-    <!-- Skrip Carian, Penapisan Kategori & Animasi Sekolah -->
+    <!-- Skrip Carian, Penapisan & Animasi Pixelate Perlahan -->
     <script>
         const searchInput = document.getElementById('searchApp');
         const appCards = document.querySelectorAll('.app-card');
@@ -354,160 +350,153 @@
 
         searchInput.addEventListener('input', filterApps);
 
-        // --- SKRIP ANIMASI KANVAS SEKOLAH, POKOK BERGOYANG & BURUNG ---
+        // --- SKRIP ANIMASI PIXELATE SEKOLAH (SLOW & RETRO DINO STYLE) ---
         const canvas = document.getElementById('schoolCanvas');
         const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = false;
 
-        // Muat naik logo sekolah untuk dipaparkan pada bangunan
         const schoolLogo = new Image();
         schoolLogo.src = '/logo.png';
 
-        // Entiti Awan (Cuaca Mendung)
+        // Entiti Awan (Bergerak Sangat Perlahan)
         let clouds = [
-            { x: 100, y: 50, speed: 0.3, size: 40 },
-            { x: 450, y: 30, speed: 0.2, size: 60 },
-            { x: 750, y: 70, speed: 0.25, size: 50 }
+            { x: 120, y: 25, speed: 0.1, size: 25 },
+            { x: 500, y: 15, speed: 0.08, size: 35 },
+            { x: 820, y: 35, speed: 0.09, size: 30 }
         ];
 
-        // Entiti Burung Berterbangan
+        // Entiti Burung Pixel (Berterbangan Perlahan)
         let birds = [
-            { x: -50, y: 80, speed: 1.2, wingCycle: 0 },
-            { x: -120, y: 110, speed: 1.0, wingCycle: 20 },
-            { x: -200, y: 70, speed: 1.4, wingCycle: 40 }
+            { x: -30, y: 35, speed: 0.3, wingCycle: 0 },
+            { x: -150, y: 50, speed: 0.25, wingCycle: 15 }
         ];
 
-        // Pembolehubah untuk pokok bergoyang
+        // Sudut pokok bergoyang perlahan
         let swayAngle = 0;
 
-        function animateSchoolScene() {
-            // Latar Belakang Langit Mendung (Cloudy Weather Theme)
-            let skyGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            skyGrad.addColorStop(0, '#0f172a');
-            skyGrad.addColorStop(1, '#1e293b');
-            ctx.fillStyle = skyGrad;
+        function animatePixelSchool() {
+            // Langit Gelap Retro Arked (Gaya Chrome Dino Night/Dark Mode)
+            ctx.fillStyle = '#090d16';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // 1. Lukis Awan Bergerak Perlahan
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
+            // 1. Lukis Awan Pixel
+            ctx.fillStyle = '#1e293b';
             for (let c of clouds) {
                 c.x += c.speed;
-                if (c.x > canvas.width + 100) c.x = -100;
+                if (c.x > canvas.width + 60) c.x = -60;
                 
-                ctx.beginPath();
-                ctx.arc(c.x, c.y, c.size, 0, Math.PI * 2);
-                ctx.arc(c.x + c.size * 0.6, c.y - c.size * 0.2, c.size * 0.7, 0, Math.PI * 2);
-                ctx.arc(c.x + c.size * 1.2, c.y, c.size * 0.8, 0, Math.PI * 2);
-                ctx.fill();
+                let px = Math.floor(c.x);
+                let py = Math.floor(c.y);
+                ctx.fillRect(px, py, c.size, 10);
+                ctx.fillRect(px + 6, py - 6, c.size - 12, 6);
             }
 
-            // 2. Lukis Burung Berterbangan
-            ctx.strokeStyle = '#94a3b8';
-            ctx.lineWidth = 2;
+            // 2. Lukis Burung Pixel Berterbangan Perlahan
+            ctx.fillStyle = '#64748b';
             for (let b of birds) {
                 b.x += b.speed;
-                b.wingCycle += 0.08;
-                if (b.x > canvas.width + 50) {
-                    b.x = -50 - Math.random() * 100;
-                    b.y = 50 + Math.random() * 60;
+                b.wingCycle += 0.015; // Sangat perlahan
+                if (b.x > canvas.width + 30) {
+                    b.x = -40;
+                    b.y = 20 + Math.random() * 30;
                 }
                 
-                let wingOffset = Math.sin(b.wingCycle) * 6;
-                ctx.beginPath();
-                ctx.moveTo(b.x - 10, b.y + wingOffset);
-                ctx.quadraticCurveTo(b.x, b.y - 5, b.x + 10, b.y + wingOffset);
-                ctx.moveTo(b.x + 10, b.y + wingOffset);
-                ctx.quadraticCurveTo(b.x + 20, b.y - 5, b.x + 30, b.y + wingOffset);
-                ctx.stroke();
+                let bx = Math.floor(b.x);
+                let by = Math.floor(b.y);
+                let flap = Math.sin(b.wingCycle) > 0 ? 1 : -1;
+                
+                ctx.fillRect(bx, by, 4, 2);
+                ctx.fillRect(bx + 4, by + flap, 4, 2);
+                ctx.fillRect(bx + 8, by, 4, 2);
             }
 
-            // 3. Lukis Tapak / Tanah Sekolah
-            ctx.fillStyle = '#064e3b';
-            ctx.fillRect(0, canvas.height - 45, canvas.width, 45);
-            ctx.fillStyle = '#047857';
-            ctx.fillRect(0, canvas.height - 45, canvas.width, 8);
+            // 3. Tanah / Rumput Pixel
+            ctx.fillStyle = '#042f2e';
+            ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
+            ctx.fillStyle = '#059669';
+            ctx.fillRect(0, canvas.height - 20, canvas.width, 4);
 
-            // 4. Lukis Bangunan Sekolah SMK Kamarul Ariffin
-            let bX = 250, bY = 110, bW = 400, bH = 185;
+            // 4. Lukis Bangunan Sekolah (Gaya Pixel Art Singkat Mendatar)
+            let bX = 320, bY = 25, bW = 360, bH = 85;
             
-            // Badan Utama Bangunan
-            ctx.fillStyle = '#334155';
+            // Badan Bangunan
+            ctx.fillStyle = '#1e293b';
             ctx.fillRect(bX, bY, bW, bH);
             
-            // Bumbung Bangunan (Gaya Tradisional Moden)
+            // Garisan Bingkai Pixel
+            ctx.strokeStyle = '#334155';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(bX, bY, bW, bH);
+
+            // Bumbung Sekolah
             ctx.fillStyle = '#0f766e';
             ctx.beginPath();
-            ctx.moveTo(bX - 20, bY);
-            ctx.lineTo(bX + bW / 2, bY - 55);
-            ctx.lineTo(bX + bW + 20, bY);
+            ctx.moveTo(bX - 15, bY);
+            ctx.lineTo(bX + bW / 2, bY - 25);
+            ctx.lineTo(bX + bW + 15, bY);
             ctx.closePath();
             ctx.fill();
 
-            // Papan Tanda / Papan Nama Bangunan & Perkataan SEMEKAR
+            // Papan Tanda SEMEKAR di Bangunan
             ctx.fillStyle = '#022c22';
-            ctx.fillRect(bX + 80, bY + 15, bW - 160, 40);
+            ctx.fillRect(bX + 100, bY + 12, bW - 200, 24);
             ctx.strokeStyle = '#10b981';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(bX + 80, bY + 15, bW - 160, 40);
+            ctx.strokeRect(bX + 100, bY + 12, bW - 200, 24);
 
             ctx.fillStyle = '#f8fafc';
-            ctx.font = 'bold 15px "Orbitron", sans-serif';
+            ctx.font = 'bold 11px "Orbitron", sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText('SEMEKAR', bX + bW / 2, bY + 41);
+            ctx.fillText('SEMEKAR', bX + bW / 2, bY + 28);
 
-            // Letak Logo Sekolah di Bangunan
+            // Logo Sekolah pada Bangunan
             try {
-                ctx.drawImage(schoolLogo, bX + 95, bY + 20, 30, 30);
-            } catch(e) {
-                // Fallback jika logo belum dimuat turun sepenuhnya
-            }
+                ctx.drawImage(schoolLogo, bX + 112, bY + 15, 18, 18);
+            } catch(e) {}
 
-            // Tingkap-tingkap Kelas (Bercahaya kemas)
+            // Tingkap Kelas (Pixel Grid)
             ctx.fillStyle = '#38bdf8';
-            let winCols = 7, winRows = 2;
-            let startWX = bX + 35, startWY = bY + 75;
+            let winCols = 8, winRows = 2;
+            let startWX = bX + 30, startWY = bY + 42;
             for (let r = 0; r < winRows; r++) {
                 for (let col = 0; col < winCols; col++) {
-                    ctx.fillRect(startWX + col * 48, startWY + r * 50, 28, 38);
+                    ctx.fillRect(startWX + col * 38, startWY + r * 22, 16, 14);
                 }
             }
 
-            // Pintu Utama Bangunan
-            ctx.fillStyle = '#0f172a';
-            ctx.fillRect(bX + bW / 2 - 25, bY + 125, 50, 60);
+            // Pintu Utama
+            ctx.fillStyle = '#090d16';
+            ctx.fillRect(bX + bW / 2 - 16, bY + 52, 32, 33);
 
-            // 5. Lukis Pokok Bergoyang (Kiri & Kanan Bangunan)
-            swayAngle += 0.04;
-            let sway = Math.sin(swayAngle) * 0.08; // Sudut ayunan ditiup angin
+            // 5. Pokok Pixel Bergoyang Sangat Perlahan (Kiri & Kanan)
+            swayAngle += 0.015; // Kelajuan ayunan sangat lembut
+            let sway = Math.sin(swayAngle) * 0.04;
 
-            drawTree(120, canvas.height - 40, sway);
-            drawTree(780, canvas.height - 40, -sway);
+            drawPixelTree(160, canvas.height - 20, sway);
+            drawPixelTree(840, canvas.height - 20, -sway);
 
-            requestAnimationFrame(animateSchoolScene);
+            requestAnimationFrame(animatePixelSchool);
         }
 
-        function drawTree(baseX, baseY, angle) {
+        function drawPixelTree(x, y, angle) {
             ctx.save();
-            ctx.translate(baseX, baseY);
+            ctx.translate(x, y);
             
-            // Batang Pokok
+            // Batang
             ctx.fillStyle = '#78350f';
-            ctx.fillRect(-6, -60, 12, 60);
+            ctx.fillRect(-3, -25, 6, 25);
 
-            // Daun Pokok Bergoyang
+            // Daun Pokok (Blocky Pixel style)
             ctx.rotate(angle);
+            ctx.fillStyle = '#047857';
+            ctx.fillRect(-18, -48, 36, 24);
             ctx.fillStyle = '#059669';
-            ctx.beginPath();
-            ctx.arc(0, -75, 35, 0, Math.PI * 2);
-            ctx.arc(-20, -60, 25, 0, Math.PI * 2);
-            ctx.arc(20, -60, 25, 0, Math.PI * 2);
-            ctx.fill();
+            ctx.fillRect(-12, -58, 24, 14);
 
             ctx.restore();
         }
 
-        // Mulakan animasi apabila imej logo siap sedia atau terus jalan
         schoolLogo.onload = () => {};
-        animateSchoolScene();
+        animatePixelSchool();
     </script>
 </body>
 </html>
