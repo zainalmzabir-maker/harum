@@ -254,7 +254,7 @@
                         <h2 class="text-2xl font-bold sketch-font text-[#2b2d42]">SMK KAMARUL ARIFFIN, LABIS</h2>
                     </div>
 
-                    <!-- Panel HUD Cuaca Semasa (Labis, Johor) - Sumber Data Rasmi Terkini -->
+                    <!-- Panel HUD Cuaca Semasa (Labis, Johor) -->
                     <div class="flex items-center gap-4 bg-[#fcfbf7] px-4 py-2 rounded-xl border-2 border-[#2b2d42] text-xs font-mono shadow-[2px_2px_0px_#2b2d42]">
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-cloud-sun text-amber-500 text-base"></i>
@@ -271,13 +271,9 @@
                     </div>
                 </div>
 
-                <!-- Paparan Kanvas Lakaran Tangan (Sketsa Animasi Mendatar Pendek & Sesuai Cuaca Cerah Berawan) -->
+                <!-- Paparan Kanvas Lakaran Tangan (Tanpa teks overlay yang mengganggu mobile) -->
                 <div class="relative w-full rounded-xl border-2 border-[#2b2d42] overflow-hidden shadow-inner bg-[#fcfbf7] flex flex-col items-center justify-center">
                     <canvas id="sketchCanvas" width="1000" height="130" class="w-full h-auto block"></canvas>
-                    
-                    <div class="absolute bottom-2 left-3 bg-[#fffef9] px-2.5 py-0.5 rounded border border-[#2b2d42] text-[10px] font-mono text-[#2b2d42]">
-                        <i class="fa-solid fa-pencil text-[#d90429] mr-1 animate-pulse"></i> Hand-Drawn Sketch Feed: Labis, Johor
-                    </div>
                 </div>
             </div>
         </section>
@@ -370,18 +366,6 @@
 
         // Sudut pokok bergoyang gaya sketch
         let sketchSway = 0;
-
-        function drawSketchLine(x1, y1, x2, y2, color = '#2b2d42', width = 2) {
-            ctx.strokeStyle = color;
-            ctx.lineWidth = width;
-            ctx.beginPath();
-            // Tambah sedikit getaran garisan (jitter) untuk gaya tulisan/lakaran tangan
-            let jitX = (Math.random() - 0.5) * 0.8;
-            let jitY = (Math.random() - 0.5) * 0.8;
-            ctx.moveTo(x1 + jitX, y1 + jitY);
-            ctx.lineTo(x2 + jitX, y2 + jitY);
-            ctx.stroke();
-        }
 
         function animateSketchScene() {
             // Latar belakang kertas kuning langsat lembut
