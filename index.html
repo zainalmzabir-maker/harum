@@ -166,7 +166,7 @@
         <!-- Senarai Kad Sistem -->
         <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             
-            <!-- 1. Pentadbiran -->
+            <!-- 1. Pentadbiran - Laporan Kerosakan -->
             <div class="app-card bg-[#fffef9] p-6 flex flex-col justify-between sketch-box relative group" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran" style="transform: rotate(-0.5deg);">
                 <div class="paper-tape"></div>
                 <div>
@@ -191,7 +191,32 @@
                 </div>
             </div>
 
-            <!-- 2. Kurikulum -->
+            <!-- 2. Pentadbiran - Sistem Minit Curai (BARU) -->
+            <div class="app-card bg-[#fffef9] p-6 flex flex-col justify-between sketch-box relative group" data-category="Pentadbiran" data-name="sistem minit curai curai.semekar.com pentadbiran" style="transform: rotate(0.6deg);">
+                <div class="paper-tape"></div>
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wider rounded-md font-mono border border-blue-300">PENTADBIRAN</span>
+                        <div class="w-10 h-10 rounded-full bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold sketch-font text-[#2b2d42] mb-2">Sistem Minit Curai</h3>
+                    <p class="text-slate-600 text-base mb-6 leading-snug">Pengurusan dan pelaporan minit curai mesyuarat, kursus, atau taklimat rasmi dengan pantas.</p>
+                </div>
+                <div>
+                    <div class="flex items-center justify-between text-xs text-slate-500 mb-3 font-mono bg-slate-100 px-3 py-1.5 rounded border border-dashed border-slate-300">
+                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
+                        <span class="truncate ml-2 text-slate-500">curai.semekar.com</span>
+                    </div>
+                    <a href="https://curai.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-[#2b2d42] hover:bg-[#d90429] text-white font-bold py-2.5 px-4 rounded-xl transition text-base sketch-font tracking-wider shadow-[2px_2px_0px_#000]">
+                        <span>Buka Sistem</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. Kurikulum -->
             <div class="app-card bg-[#fffef9] p-6 flex flex-col justify-between sketch-box relative group" data-category="Kurikulum" data-name="pengurusan headcount headcount.semekar.com kurikulum" style="transform: rotate(0.8deg);">
                 <div class="paper-tape"></div>
                 <div>
@@ -216,7 +241,7 @@
                 </div>
             </div>
 
-            <!-- 3. Hal Ehwal Murid -->
+            <!-- 4. Hal Ehwal Murid -->
             <div class="app-card bg-[#fffef9] p-6 flex flex-col justify-between sketch-box relative group" data-category="HEM" data-name="pelaporan kehadiran murid hadir.semekar.com hem hal ehwal murid" style="transform: rotate(-0.7deg);">
                 <div class="paper-tape"></div>
                 <div>
@@ -241,7 +266,7 @@
                 </div>
             </div>
 
-            <!-- 4. KoKurikulum -->
+            <!-- 5. KoKurikulum -->
             <div class="app-card bg-[#fffef9] p-6 flex flex-col justify-between sketch-box relative group" data-category="KoKurikulum" data-name="pelaporan aktiviti kokurikulum koku.semekar.com" style="transform: rotate(0.5deg);">
                 <div class="paper-tape"></div>
                 <div>
@@ -391,7 +416,6 @@
 
     <!-- Skrip Aplikasi & Sambungan Google Sheet API -->
     <script>
-        // URL Google Apps Script Web App yang telah disetkan
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwqTHutqr1Mw1ajxwm-Voo7ovSWC4fP2y3xqDK51U6g85lPnNYpIdFi5yU7_HtopS8ASg/exec";
 
         const adminCredentials = {
@@ -479,7 +503,6 @@
             document.getElementById("announcementModal").classList.add("hidden");
         }
 
-        // Sambungan ke Google Sheet melalui API
         let announcementsData = [];
 
         async function fetchAnnouncements() {
