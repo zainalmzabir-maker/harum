@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HARUM - Hab Pengisian Maklumat SMK Kamarul Ariffin</title>
+    <!-- Favicon Sekolah -->
+    <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -54,7 +56,7 @@
             <!-- Logo & Identiti Sekolah -->
             <div class="flex items-center space-x-3">
                 <div class="bg-slate-900 p-2 rounded-xl flex items-center justify-center w-12 h-12 shrink-0 shadow-sm">
-                    <img src="/logo.png" alt="Logo SMK Kamarul Ariffin" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f172a/ffffff?text=SMKKA';">
+                    <img src="logo.png" alt="Logo SMK Kamarul Ariffin" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f172a/ffffff?text=SMKKA';">
                 </div>
                 <div>
                     <div class="text-blue-600 text-xs font-bold uppercase tracking-wider">Hab Pengisian Maklumat SEMEKAR</div>
@@ -336,14 +338,25 @@
         </div>
     </div>
 
-    <!-- Footer Korporat -->
-    <footer class="bg-white border-t border-slate-200 mt-auto py-6">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
-            <div>
-                Hab Pengisian Maklumat <strong>HARUM</strong> — SMK Kamarul Ariffin
+    <!-- Footer Korporat Lengkap Maklumat Sekolah & Logo -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-8">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6 text-slate-600 text-xs">
+            <div class="flex items-center space-x-3 text-left">
+                <div class="bg-slate-900 p-2 rounded-xl flex items-center justify-center w-12 h-12 shrink-0 shadow-sm">
+                    <img src="logo.png" alt="Logo SMK Kamarul Ariffin" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f172a/ffffff?text=SMKKA';">
+                </div>
+                <div class="space-y-0.5">
+                    <div class="font-bold text-slate-900 text-sm">SMK Kamarul Ariffin</div>
+                    <div><i class="fa-solid fa-location-dot text-blue-600 mr-1"></i> Jalan Tenang, 85300 Labis, Segamat Johor</div>
+                    <div>
+                        <i class="fa-solid fa-phone text-blue-600 mr-1"></i> 07-9255793 &nbsp;|&nbsp; 
+                        <i class="fa-solid fa-envelope text-blue-600 mr-1"></i> jea7039@moe.edu.my
+                    </div>
+                </div>
             </div>
-            <div class="font-mono text-[11px] text-slate-400">
-                SEKOLAH BERKUALITI // KEMENJADIAN MURID
+            <div class="text-center md:text-right space-y-1">
+                <div>Hab Pengisian Maklumat <strong>HARUM</strong> (<span class="font-mono text-blue-600">harum.semekar.com</span>)</div>
+                <div class="font-mono text-[11px] text-slate-400">SEKOLAH BERKUALITI // KEMENJADIAN MURID</div>
             </div>
         </div>
     </footer>
