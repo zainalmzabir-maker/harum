@@ -8,191 +8,159 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Plus Jakarta Sans & Outfit -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-        }
-        .tech-font { 
-            font-family: 'Outfit', sans-serif; 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc;
+            color: #1e293b;
         }
         
-        /* Kesan Kaca Telus (Glassmorphism) */
-        .glass-panel {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        /* Korporat Minimalist Styles */
+        .corporate-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease;
+        }
+        .corporate-card:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
         }
 
-        .glass-card {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(16, 185, 129, 0.15);
-            transition: all 0.3s ease;
+        .corporate-input {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.75rem;
+            color: #0f172a;
+            transition: all 0.2s ease;
         }
-        .glass-card:hover {
-            border-color: rgba(16, 185, 129, 0.5);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);
-        }
-
-        .glass-input {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #ffffff;
-        }
-        .glass-input:focus {
-            border-color: #10b981;
+        .corporate-input:focus {
+            border-color: #2563eb;
             outline: none;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
-        }
-
-        @keyframes ambientGlow {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-        }
-        .ambient-blob {
-            animation: ambientGlow 8s infinite ease-in-out;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-emerald-500 selection:text-slate-950">
+<body class="min-h-screen flex flex-col selection:bg-blue-100 selection:text-blue-900">
     
-    <!-- Header / Hab Pengisian Maklumat (Eco-Tech Glassmorphism) -->
-    <header class="bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 border-b border-emerald-500/30 shadow-2xl relative overflow-hidden py-8 px-4">
-        <!-- Ambient Background Glows -->
-        <div class="absolute -top-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl ambient-blob pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl ambient-blob pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto relative z-10 flex flex-col gap-6">
+    <!-- Header / Navbar Korporat Bersih -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
             
-            <!-- Bahagian Atas: Logo, Info Sekolah & Butang Admin -->
-            <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
-                
-                <!-- Identiti & Logo Sekolah -->
-                <div class="flex items-center space-x-4 text-center sm:text-left">
-                    <div class="relative bg-slate-900/80 p-2.5 rounded-2xl border border-emerald-500/40 shadow-lg flex items-center justify-center w-16 h-16 shrink-0 group">
-                        <div class="absolute inset-0 bg-emerald-500/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition"></div>
-                        <img src="/logo.png" alt="Logo SMK Kamarul Ariffin" class="w-full h-full object-contain relative z-10" onerror="this.onerror=null; this.src='https://placehold.co/200x200/022c22/ffffff?text=SMKKA';">
-                    </div>
-                    <div>
-                        <div class="text-emerald-400 text-xs font-mono uppercase tracking-widest flex items-center gap-1.5">
-                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Hab Pengisian Maklumat SEMEKAR
-                        </div>
-                        <div class="text-xl font-bold tech-font tracking-wide text-slate-100">SMK Kamarul Ariffin, Labis</div>
-                    </div>
+            <!-- Logo & Identiti Sekolah -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-slate-900 p-2 rounded-xl flex items-center justify-center w-12 h-12 shrink-0 shadow-sm">
+                    <img src="/logo.png" alt="Logo SMK Kamarul Ariffin" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f172a/ffffff?text=SMKKA';">
                 </div>
-
-                <!-- Kawasan Admin & Carian -->
-                <div class="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto">
-                    <!-- Kotak Carian Sistem -->
-                    <div class="w-full sm:w-64">
-                        <div class="relative">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-emerald-400">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </span>
-                            <input type="text" id="searchApp" placeholder="Cari sistem..." class="w-full pl-11 pr-4 py-2.5 rounded-xl glass-input text-sm placeholder-slate-500 shadow-inner">
-                        </div>
-                    </div>
-
-                    <!-- Butang Log Masuk / Status Admin -->
-                    <div id="adminAuthArea">
-                        <button onclick="openLoginModal()" class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-xl text-sm transition shadow-lg shadow-emerald-900/40 flex items-center gap-2 tech-font border border-emerald-400/30">
-                            <i class="fa-solid fa-lock text-xs"></i> Log Masuk Admin
-                        </button>
-                    </div>
+                <div>
+                    <div class="text-blue-600 text-xs font-bold uppercase tracking-wider">Hab Pengisian Maklumat SEMEKAR</div>
+                    <div class="text-base font-bold text-slate-900">SMK Kamarul Ariffin, Labis</div>
                 </div>
-
             </div>
 
-            <!-- Banner Utama "HARUM" (Glassmorphism Panel) -->
-            <div class="relative w-full py-6 px-8 glass-panel rounded-3xl flex flex-col items-center justify-center text-center">
-                <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full text-emerald-400 text-xs font-mono uppercase tracking-widest mb-2">
-                    Eco-Tech Digital Hub
+            <!-- Kotak Carian & Butang Admin -->
+            <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+                <div class="w-full sm:w-64">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        </span>
+                        <input type="text" id="searchApp" placeholder="Cari sistem..." class="w-full pl-10 pr-4 py-2 corporate-input text-sm placeholder-slate-400">
+                    </div>
                 </div>
-                <h1 class="text-5xl sm:text-7xl font-black tech-font tracking-wider bg-gradient-to-r from-white via-emerald-200 to-teal-400 bg-clip-text text-transparent drop-shadow-md">
-                    HARUM
-                </h1>
-                <p class="text-xs sm:text-sm font-medium tracking-wide text-slate-300 uppercase tech-font mt-2">
-                    Hab Automasi Rekod &amp; Urus Maklumat
-                </p>
+
+                <div id="adminAuthArea">
+                    <button onclick="openLoginModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition shadow-sm flex items-center gap-2">
+                        <i class="fa-solid fa-lock text-xs"></i> Log Masuk Admin
+                    </button>
+                </div>
             </div>
 
         </div>
     </header>
 
+    <!-- Hero Banner Utama -->
+    <section class="bg-slate-900 text-white py-12 px-4 shadow-inner">
+        <div class="max-w-7xl mx-auto text-center space-y-3">
+            <span class="px-3 py-1 bg-blue-500/10 border border-blue-400/30 text-blue-400 text-xs font-semibold rounded-full uppercase tracking-widest">
+                Portal Rasmi Warga Pendidikan
+            </span>
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+                HARUM
+            </h1>
+            <p class="text-slate-400 text-sm md:text-base font-medium max-w-xl mx-auto">
+                Hab Automasi Rekod &amp; Urus Maklumat SMK Kamarul Ariffin
+            </p>
+        </div>
+    </section>
+
     <!-- Kandungan Utama -->
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full space-y-10">
         
         <!-- SEKSYEN PAPAN PENGUMUMAN RASMI -->
-        <section class="mb-12">
-            <div class="glass-panel p-6 sm:p-8 rounded-3xl relative">
-                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-emerald-500/20 pb-4">
-                    <div>
-                        <div class="text-emerald-400 text-xs font-bold uppercase tracking-widest font-mono flex items-center gap-1.5 mb-1">
-                            <i class="fa-solid fa-bullhorn"></i> Papan Kenyataan Rasmi
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl font-bold tech-font text-white">Pengumuman &amp; Notis Penting</h2>
+        <section class="corporate-card p-6 md:p-8 bg-white">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6 border-b border-slate-100 pb-4">
+                <div>
+                    <div class="text-blue-600 text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                        <i class="fa-solid fa-bullhorn"></i> Papan Kenyataan Rasmi
                     </div>
-
-                    <!-- Butang Tambah Pengumuman (Hanya keluar jika Admin Login) -->
-                    <div id="addAnnouncementBtnContainer" class="hidden">
-                        <button onclick="openAnnouncementModal()" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl tech-font text-sm transition shadow-lg shadow-emerald-900/50 flex items-center gap-2 border border-emerald-400/30">
-                            <i class="fa-solid fa-plus-circle text-xs"></i> Buat Pengumuman Baru
-                        </button>
-                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900">Pengumuman &amp; Notis Penting</h2>
                 </div>
 
-                <!-- Senarai Pengumuman -->
-                <div id="announcementList" class="space-y-4">
-                    <p class="text-slate-400 text-center py-4 italic font-mono text-sm">Memuatkan pengumuman dari Google Sheet...</p>
+                <!-- Butang Tambah Pengumuman (Hanya keluar jika Admin Login) -->
+                <div id="addAnnouncementBtnContainer" class="hidden">
+                    <button onclick="openAnnouncementModal()" class="px-4 py-2 bg-slate-900 hover:bg-blue-600 text-white font-semibold rounded-xl text-sm transition shadow-sm flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle text-xs"></i> Buat Pengumuman Baru
+                    </button>
                 </div>
+            </div>
+
+            <!-- Senarai Pengumuman -->
+            <div id="announcementList" class="space-y-4">
+                <p class="text-slate-400 text-center py-4 italic text-sm">Memuatkan pengumuman dari Google Sheet...</p>
             </div>
         </section>
 
         <!-- Menu Penapis Kategori Sistem -->
-        <div class="flex items-center justify-between mb-8 flex-wrap gap-4 border-b border-slate-800 pb-4">
-            <div class="flex items-center space-x-2 text-slate-400 text-xs uppercase tracking-widest font-mono">
-                <i class="fa-solid fa-folder-open text-emerald-400"></i>
-                <span>Kategori Sistem:</span>
+        <div class="space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider">Kategori Sistem</h3>
             </div>
             
             <div class="flex flex-wrap gap-2" id="filterButtons">
-                <button onclick="filterCategory('all')" data-cat="all" class="filter-btn px-4 py-2 bg-emerald-600 text-white rounded-xl shadow-lg shadow-emerald-900/40 text-xs font-bold uppercase tracking-wider transition hover:bg-emerald-500 tech-font border border-emerald-400/30">Semua</button>
-                <button onclick="filterCategory('Pentadbiran')" data-cat="Pentadbiran" class="filter-btn px-4 py-2 bg-slate-900/80 text-slate-300 border border-slate-800 rounded-xl text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white tech-font">Pentadbiran</button>
-                <button onclick="filterCategory('Kurikulum')" data-cat="Kurikulum" class="filter-btn px-4 py-2 bg-slate-900/80 text-slate-300 border border-slate-800 rounded-xl text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white tech-font">Kurikulum</button>
-                <button onclick="filterCategory('HEM')" data-cat="HEM" class="filter-btn px-4 py-2 bg-slate-900/80 text-slate-300 border border-slate-800 rounded-xl text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white tech-font">HEM</button>
-                <button onclick="filterCategory('KoKurikulum')" data-cat="KoKurikulum" class="filter-btn px-4 py-2 bg-slate-900/80 text-slate-300 border border-slate-800 rounded-xl text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white tech-font">KoKurikulum</button>
+                <button onclick="filterCategory('all')" data-cat="all" class="filter-btn px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-semibold transition shadow-sm active-btn">Semua Sistem</button>
+                <button onclick="filterCategory('Pentadbiran')" data-cat="Pentadbiran" class="filter-btn px-4 py-2 bg-white text-slate-600 border border-slate-200 rounded-xl text-xs font-semibold transition hover:bg-slate-50">Pentadbiran</button>
+                <button onclick="filterCategory('Kurikulum')" data-cat="Kurikulum" class="filter-btn px-4 py-2 bg-white text-slate-600 border border-slate-200 rounded-xl text-xs font-semibold transition hover:bg-slate-50">Kurikulum</button>
+                <button onclick="filterCategory('HEM')" data-cat="HEM" class="filter-btn px-4 py-2 bg-white text-slate-600 border border-slate-200 rounded-xl text-xs font-semibold transition hover:bg-slate-50">Hal Ehwal Murid</button>
+                <button onclick="filterCategory('KoKurikulum')" data-cat="KoKurikulum" class="filter-btn px-4 py-2 bg-white text-slate-600 border border-slate-200 rounded-xl text-xs font-semibold transition hover:bg-slate-50">KoKurikulum</button>
             </div>
         </div>
 
         <!-- Senarai Kad Sistem -->
-        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <!-- 1. Pentadbiran - Laporan Kerosakan -->
-            <div class="app-card glass-card rounded-2xl p-6 flex flex-col justify-between relative group overflow-hidden" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
-                <div class="absolute -right-12 -top-12 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition"></div>
+            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-blue-950/80 text-blue-400 border border-blue-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">PENTADBIRAN</span>
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Pentadbiran</span>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                            <i class="fa-solid fa-screwdriver-wrench text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold tech-font text-white mb-2 group-hover:text-emerald-300 transition">Laporan Kerosakan</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Sistem pelaporan dan pengurusan kerosakan fasiliti sekolah dengan rekod masa nyata.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1.5">Laporan Kerosakan</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-6">Sistem pelaporan dan pengurusan kerosakan fasiliti sekolah dengan rekod masa nyata.</p>
                 </div>
                 <div>
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
-                        <span>Status: <span class="text-emerald-400 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-400">rosak.semekar.com</span>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
+                        <span class="truncate ml-2 text-slate-500">rosak.semekar.com</span>
                     </div>
-                    <a href="https://rosak.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-2.5 px-4 rounded-xl transition text-xs tracking-wider uppercase tech-font shadow-lg">
+                    <a href="https://rosak.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
                         <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-[10px]"></i>
                     </a>
@@ -200,24 +168,23 @@
             </div>
 
             <!-- 2. Pentadbiran - Sistem Minit Curai -->
-            <div class="app-card glass-card rounded-2xl p-6 flex flex-col justify-between relative group overflow-hidden" data-category="Pentadbiran" data-name="sistem minit curai curai.semekar.com pentadbiran">
-                <div class="absolute -right-12 -top-12 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition"></div>
+            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="sistem minit curai curai.semekar.com pentadbiran">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-blue-950/80 text-blue-400 border border-blue-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">PENTADBIRAN</span>
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                            <i class="fa-solid fa-file-lines"></i>
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Pentadbiran</span>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                            <i class="fa-solid fa-file-lines text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold tech-font text-white mb-2 group-hover:text-emerald-300 transition">Sistem Minit Curai</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Pengurusan dan pelaporan minit curai mesyuarat, kursus, atau taklimat rasmi dengan pantas.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1.5">Sistem Minit Curai</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-6">Pengurusan dan pelaporan minit curai mesyuarat, kursus, atau taklimat rasmi dengan pantas.</p>
                 </div>
                 <div>
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
-                        <span>Status: <span class="text-emerald-400 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-400">curai.semekar.com</span>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
+                        <span class="truncate ml-2 text-slate-500">curai.semekar.com</span>
                     </div>
-                    <a href="https://curai.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-2.5 px-4 rounded-xl transition text-xs tracking-wider uppercase tech-font shadow-lg">
+                    <a href="https://curai.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
                         <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-[10px]"></i>
                     </a>
@@ -225,24 +192,23 @@
             </div>
 
             <!-- 3. Pentadbiran - Sistem Pelaporan Aktiviti Satu Muka (OPR) -->
-            <div class="app-card glass-card rounded-2xl p-6 flex flex-col justify-between relative group overflow-hidden" data-category="Pentadbiran" data-name="sistem pelaporan aktiviti satu muka opr opr.semekar.com pentadbiran">
-                <div class="absolute -right-12 -top-12 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition"></div>
+            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="sistem pelaporan aktiviti satu muka opr opr.semekar.com pentadbiran">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-blue-950/80 text-blue-400 border border-blue-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">PENTADBIRAN</span>
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400">
-                            <i class="fa-solid fa-file-waveform"></i>
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Pentadbiran</span>
+                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+                            <i class="fa-solid fa-file-waveform text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold tech-font text-white mb-2 group-hover:text-emerald-300 transition">Sistem Pelaporan Aktiviti Satu Muka (OPR)</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Pelaporan ringkas satu muka surat bagi aktiviti atau program sekolah dengan pantas.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1.5">Sistem Pelaporan Aktiviti Satu Muka (OPR)</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-6">Pelaporan ringkas satu muka surat bagi aktiviti atau program sekolah dengan pantas.</p>
                 </div>
                 <div>
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
-                        <span>Status: <span class="text-emerald-400 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-400">opr.semekar.com</span>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
+                        <span class="truncate ml-2 text-slate-500">opr.semekar.com</span>
                     </div>
-                    <a href="https://opr.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-2.5 px-4 rounded-xl transition text-xs tracking-wider uppercase tech-font shadow-lg">
+                    <a href="https://opr.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
                         <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-[10px]"></i>
                     </a>
@@ -250,24 +216,23 @@
             </div>
 
             <!-- 4. Kurikulum -->
-            <div class="app-card glass-card rounded-2xl p-6 flex flex-col justify-between relative group overflow-hidden" data-category="Kurikulum" data-name="pengurusan headcount headcount.semekar.com kurikulum">
-                <div class="absolute -right-12 -top-12 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition"></div>
+            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="Kurikulum" data-name="pengurusan headcount headcount.semekar.com kurikulum">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">KURIKULUM</span>
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                            <i class="fa-solid fa-chart-line"></i>
+                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Kurikulum</span>
+                        <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
+                            <i class="fa-solid fa-chart-line text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold tech-font text-white mb-2 group-hover:text-emerald-300 transition">Pengurusan Headcount</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Analisis prestasi akademik murid, unjuran sasaran peperiksaan, dan metrik kemajuan.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1.5">Pengurusan Headcount</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-6">Analisis prestasi akademik murid, unjuran sasaran peperiksaan, dan metrik kemajuan.</p>
                 </div>
                 <div>
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
-                        <span>Status: <span class="text-emerald-400 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-400">headcount.semekar.com</span>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
+                        <span class="truncate ml-2 text-slate-500">headcount.semekar.com</span>
                     </div>
-                    <a href="https://headcount.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-2.5 px-4 rounded-xl transition text-xs tracking-wider uppercase tech-font shadow-lg">
+                    <a href="https://headcount.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
                         <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-[10px]"></i>
                     </a>
@@ -275,24 +240,23 @@
             </div>
 
             <!-- 5. Hal Ehwal Murid -->
-            <div class="app-card glass-card rounded-2xl p-6 flex flex-col justify-between relative group overflow-hidden" data-category="HEM" data-name="pelaporan kehadiran murid hadir.semekar.com hem hal ehwal murid">
-                <div class="absolute -right-12 -top-12 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl group-hover:bg-amber-500/20 transition"></div>
+            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="HEM" data-name="pelaporan kehadiran murid hadir.semekar.com hem hal ehwal murid">
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 bg-amber-950/80 text-amber-400 border border-amber-800/50 text-[10px] font-bold uppercase tracking-wider rounded-md font-mono">HAL EHWAL MURID</span>
-                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
-                            <i class="fa-solid fa-user-check"></i>
+                        <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Hal Ehwal Murid</span>
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
+                            <i class="fa-solid fa-user-check text-sm"></i>
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold tech-font text-white mb-2 group-hover:text-emerald-300 transition">Pelaporan Kehadiran Murid</h3>
-                    <p class="text-slate-400 text-xs leading-relaxed mb-4">Papan pemuka rekod kehadiran harian, statistik kehadiran, dan analitik disiplin.</p>
+                    <h3 class="text-lg font-bold text-slate-900 mb-1.5">Pelaporan Kehadiran Murid</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed mb-6">Papan pemuka rekod kehadiran harian, statistik kehadiran, dan analitik disiplin.</p>
                 </div>
                 <div>
-                    <div class="flex items-center justify-between text-[11px] text-slate-500 mb-3 font-mono bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800">
-                        <span>Status: <span class="text-emerald-400 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-400">hadir.semekar.com</span>
+                    <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
+                        <span class="truncate ml-2 text-slate-500">hadir.semekar.com</span>
                     </div>
-                    <a href="https://hadir.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-bold py-2.5 px-4 rounded-xl transition text-xs tracking-wider uppercase tech-font shadow-lg">
+                    <a href="https://hadir.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
                         <i class="fa-solid fa-arrow-up-right-from-square ml-2 text-[10px]"></i>
                     </a>
@@ -302,117 +266,83 @@
         </div>
 
         <!-- Mesej tiada sistem -->
-        <div id="noResults" class="hidden text-center py-16 mb-12">
-            <div class="inline-block p-4 rounded-full bg-slate-900 border border-slate-800 mb-4 text-emerald-400">
-                <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
+        <div id="noResults" class="hidden text-center py-16">
+            <div class="inline-block p-4 rounded-full bg-slate-100 border border-slate-200 mb-3 text-slate-400">
+                <i class="fa-solid fa-triangle-exclamation text-2xl"></i>
             </div>
-            <p class="text-slate-300 text-lg font-bold tech-font">TIADA SISTEM DIJUMPAI</p>
+            <p class="text-slate-800 text-base font-bold">Tiada sistem sepadan dijumpai</p>
             <p class="text-slate-500 text-xs mt-1">Sila semak semula ejaan kata kunci carian anda.</p>
         </div>
-
-        <!-- SEKSYEN KAMPUS SEKOLAH & CUACA TERKINI (ECO-TECH HUD) -->
-        <section class="mt-8 pt-6 border-t border-slate-800">
-            <div class="glass-panel p-6 rounded-3xl relative overflow-hidden">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4 mb-4 relative z-10">
-                    <div>
-                        <div class="inline-flex items-center gap-2 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-1">
-                            <i class="fa-solid fa-wifi"></i> Eco-Tech Campus Feed
-                        </div>
-                        <h2 class="text-xl font-bold tech-font text-white">SMK KAMARUL ARIFFIN, LABIS</h2>
-                    </div>
-
-                    <div class="flex items-center gap-4 bg-slate-950/80 px-4 py-2 rounded-xl border border-slate-800 text-xs font-mono shadow-inner">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-cloud-sun text-amber-400 text-base"></i>
-                            <div>
-                                <div class="text-[9px] text-slate-500 uppercase">Cuaca Labis</div>
-                                <div class="text-emerald-400 font-bold">29°C • Cerah Berawan</div>
-                            </div>
-                        </div>
-                        <div class="h-5 w-[1px] bg-slate-800"></div>
-                        <div>
-                            <div class="text-[9px] text-slate-500 uppercase">Kelembapan</div>
-                            <div class="text-slate-300 font-bold">82%</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative w-full rounded-2xl border border-slate-800 overflow-hidden shadow-inner bg-slate-950 flex flex-col items-center justify-center">
-                    <canvas id="sketchCanvas" width="1000" height="130" class="w-full h-auto block"></canvas>
-                </div>
-            </div>
-        </section>
 
     </main>
 
     <!-- MODAL LOG MASUK ADMIN -->
-    <div id="loginModal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-md w-full relative border border-emerald-500/40">
-            <div class="flex justify-between items-center mb-4 border-b border-emerald-500/20 pb-3">
-                <h3 class="text-xl font-bold tech-font text-white">Log Masuk Pentadbir</h3>
-                <button onclick="closeLoginModal()" class="text-slate-400 hover:text-red-400 font-bold text-lg"><i class="fa-solid fa-xmark"></i></button>
+    <div id="loginModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl max-w-md w-full relative shadow-2xl border border-slate-100">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
+                <h3 class="text-lg font-bold text-slate-900">Log Masuk Pentadbir</h3>
+                <button onclick="closeLoginModal()" class="text-slate-400 hover:text-slate-600 font-bold"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             
             <form onsubmit="handleLogin(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold mb-1 text-slate-300 uppercase tracking-wider font-mono">Pilih Peranan (Jawatan):</label>
-                    <select id="adminRole" class="w-full p-3 rounded-xl glass-input text-sm focus:outline-none">
-                        <option value="Pengetua" class="bg-slate-900">Pengetua</option>
-                        <option value="PKP" class="bg-slate-900">PKP</option>
-                        <option value="PKHEM" class="bg-slate-900">PKHEM</option>
-                        <option value="PKKO" class="bg-slate-900">PKKO</option>
-                        <option value="GKBSM" class="bg-slate-900">GKBSM</option>
-                        <option value="GKBB" class="bg-slate-900">GKBB</option>
-                        <option value="GKBM" class="bg-slate-900">GKBM</option>
-                        <option value="GKBT" class="bg-slate-900">GKBT</option>
+                    <label class="block text-xs font-bold mb-1.5 text-slate-600 uppercase tracking-wider">Pilih Peranan (Jawatan):</label>
+                    <select id="adminRole" class="w-full p-3 corporate-input text-sm focus:outline-none">
+                        <option value="Pengetua">Pengetua</option>
+                        <option value="PKP">PKP</option>
+                        <option value="PKHEM">PKHEM</option>
+                        <option value="PKKO">PKKO</option>
+                        <option value="GKBSM">GKBSM</option>
+                        <option value="GKBB">GKBB</option>
+                        <option value="GKBM">GKBM</option>
+                        <option value="GKBT">GKBT</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold mb-1 text-slate-300 uppercase tracking-wider font-mono">Kata Laluan:</label>
-                    <input type="password" id="adminPassword" placeholder="Masukkan kata laluan..." class="w-full p-3 rounded-xl glass-input text-sm focus:outline-none" required>
+                    <label class="block text-xs font-bold mb-1.5 text-slate-600 uppercase tracking-wider">Kata Laluan:</label>
+                    <input type="password" id="adminPassword" placeholder="Masukkan kata laluan..." class="w-full p-3 corporate-input text-sm focus:outline-none" required>
                 </div>
-                <div id="loginError" class="text-red-400 text-xs font-mono hidden">Kata laluan salah! Sila cuba lagi.</div>
+                <div id="loginError" class="text-red-500 text-xs font-medium hidden">Kata laluan salah! Sila cuba lagi.</div>
                 <div class="flex justify-end gap-3 pt-2">
-                    <button type="button" onclick="closeLoginModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-bold text-xs uppercase">Batal</button>
-                    <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-xs uppercase tracking-wider tech-font shadow-lg">Masuk</button>
+                    <button type="button" onclick="closeLoginModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-semibold text-xs">Batal</button>
+                    <button type="submit" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold text-xs shadow-sm">Masuk</button>
                 </div>
             </form>
         </div>
     </div>
 
     <!-- MODAL BUAT PENGUMUMAN BARU -->
-    <div id="announcementModal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
-        <div class="glass-panel p-6 sm:p-8 rounded-3xl max-w-lg w-full relative border border-emerald-500/40">
-            <div class="flex justify-between items-center mb-4 border-b border-emerald-500/20 pb-3">
-                <h3 class="text-xl font-bold tech-font text-white">Tambah Pengumuman Rasmi</h3>
-                <button onclick="closeAnnouncementModal()" class="text-slate-400 hover:text-red-400 font-bold text-lg"><i class="fa-solid fa-xmark"></i></button>
+    <div id="announcementModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white p-6 sm:p-8 rounded-2xl max-w-lg w-full relative shadow-2xl border border-slate-100">
+            <div class="flex justify-between items-center mb-4 border-b border-slate-100 pb-3">
+                <h3 class="text-lg font-bold text-slate-900">Tambah Pengumuman Rasmi</h3>
+                <button onclick="closeAnnouncementModal()" class="text-slate-400 hover:text-slate-600 font-bold"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             
             <form onsubmit="handlePostAnnouncement(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-bold mb-1 text-slate-300 uppercase tracking-wider font-mono">Tajuk Pengumuman:</label>
-                    <input type="text" id="annTitle" placeholder="Contoh: Mesyuarat Guru Bil. 3/2026" class="w-full p-3 rounded-xl glass-input text-sm focus:outline-none" required>
+                    <label class="block text-xs font-bold mb-1.5 text-slate-600 uppercase tracking-wider">Tajuk Pengumuman:</label>
+                    <input type="text" id="annTitle" placeholder="Contoh: Mesyuarat Guru Bil. 3/2026" class="w-full p-3 corporate-input text-sm focus:outline-none" required>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold mb-1 text-slate-300 uppercase tracking-wider font-mono">Isi Kandungan:</label>
-                    <textarea id="annContent" rows="4" placeholder="Tulis butiran pengumuman di sini..." class="w-full p-3 rounded-xl glass-input text-sm focus:outline-none" required></textarea>
+                    <label class="block text-xs font-bold mb-1.5 text-slate-600 uppercase tracking-wider">Isi Kandungan:</label>
+                    <textarea id="annContent" rows="4" placeholder="Tulis butiran pengumuman di sini..." class="w-full p-3 corporate-input text-sm focus:outline-none resize-none" required></textarea>
                 </div>
                 <div class="flex justify-end gap-3 pt-2">
-                    <button type="button" onclick="closeAnnouncementModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-bold text-xs uppercase">Batal</button>
-                    <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-xs uppercase tracking-wider tech-font shadow-lg">Terbitkan</button>
+                    <button type="button" onclick="closeAnnouncementModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-semibold text-xs">Batal</button>
+                    <button type="submit" class="px-5 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold text-xs shadow-sm">Terbitkan</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Footer Portal -->
-    <footer class="bg-slate-900 border-t border-slate-800 mt-auto py-6">
-        <div class="max-w-7xl mx-auto px-4 text-center text-xs flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center space-x-2">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-                <span class="text-slate-300">Hab Pengisian Maklumat <strong>HARUM</strong> — SMK Kamarul Ariffin</span>
+    <!-- Footer Korporat -->
+    <footer class="bg-white border-t border-slate-200 mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
+            <div>
+                Hab Pengisian Maklumat <strong>HARUM</strong> — SMK Kamarul Ariffin
             </div>
-            <div class="font-mono text-[10px] text-emerald-400">
+            <div class="font-mono text-[11px] text-slate-400">
                 SEKOLAH BERKUALITI // KEMENJADIAN MURID
             </div>
         </div>
@@ -446,9 +376,9 @@
 
             if (currentAdmin) {
                 authArea.innerHTML = `
-                    <div class="flex items-center gap-2 bg-slate-900 px-3.5 py-2 rounded-xl border border-emerald-500/40 text-xs font-mono shadow-lg">
-                        <span class="text-emerald-400 font-bold">👤 ${currentAdmin}</span>
-                        <button onclick="handleLogout()" class="text-slate-400 hover:text-red-400 font-bold ml-1" title="Log Keluar">
+                    <div class="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200 text-xs font-medium">
+                        <span class="text-blue-600 font-bold">👤 ${currentAdmin}</span>
+                        <button onclick="handleLogout()" class="text-slate-400 hover:text-red-500 font-bold ml-1" title="Log Keluar">
                             <i class="fa-solid fa-right-from-bracket"></i>
                         </button>
                     </div>
@@ -456,7 +386,7 @@
                 addBtnContainer.classList.remove("hidden");
             } else {
                 authArea.innerHTML = `
-                    <button onclick="openLoginModal()" class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold rounded-xl text-sm transition shadow-lg shadow-emerald-900/40 flex items-center gap-2 tech-font border border-emerald-400/30">
+                    <button onclick="openLoginModal()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl text-sm transition shadow-sm flex items-center gap-2">
                         <i class="fa-solid fa-lock text-xs"></i> Log Masuk Admin
                     </button>
                 `;
@@ -516,7 +446,7 @@
                 announcementsData = await response.json();
                 renderAnnouncements();
             } catch (error) {
-                container.innerHTML = `<p class="text-red-400 text-center py-4 italic font-mono text-sm">Gagal memuatkan data dari Google Sheet.</p>`;
+                container.innerHTML = `<p class="text-red-500 text-center py-4 italic text-sm">Gagal memuatkan data dari Google Sheet.</p>`;
             }
         }
 
@@ -538,7 +468,7 @@
             };
 
             closeAnnouncementModal();
-            document.getElementById("announcementList").innerHTML = `<p class="text-slate-400 text-center py-4 italic font-mono text-sm">Menghantar pengumuman ke Google Sheet...</p>`;
+            document.getElementById("announcementList").innerHTML = `<p class="text-slate-400 text-center py-4 italic text-sm">Menghantar pengumuman ke Google Sheet...</p>`;
 
             try {
                 await fetch(WEB_APP_URL, {
@@ -558,7 +488,7 @@
                 return;
             }
             if (confirm("Adakah anda pasti mahu memadam pengumuman ini?")) {
-                document.getElementById("announcementList").innerHTML = `<p class="text-slate-400 text-center py-4 italic font-mono text-sm">Memadam dari Google Sheet...</p>`;
+                document.getElementById("announcementList").innerHTML = `<p class="text-slate-400 text-center py-4 italic text-sm">Memadam dari Google Sheet...</p>`;
                 try {
                     await fetch(WEB_APP_URL, {
                         method: "POST",
@@ -572,11 +502,10 @@
             }
         }
 
-        // Fungsi Penukar Format Tarikh ke Format Malaysia (ms-MY)
         function formatMalaysianDate(dateString) {
             if (!dateString) return '';
             const date = new Date(dateString);
-            if (isNaN(date.getTime())) return dateString; // Jika sudah format teks biasa
+            if (isNaN(date.getTime())) return dateString;
             
             return date.toLocaleDateString('ms-MY', {
                 day: 'numeric',
@@ -589,7 +518,7 @@
             const container = document.getElementById("announcementList");
 
             if (announcementsData.length === 0) {
-                container.innerHTML = `<p class="text-slate-400 text-center py-4 italic font-mono text-sm">Tiada pengumuman rasmi buat masa ini.</p>`;
+                container.innerHTML = `<p class="text-slate-400 text-center py-4 italic text-sm">Tiada pengumuman rasmi buat masa ini.</p>`;
                 return;
             }
 
@@ -597,22 +526,22 @@
                 const canDelete = currentAdmin === item.author;
                 const formattedDate = formatMalaysianDate(item.date);
                 return `
-                    <div class="glass-card p-5 rounded-2xl relative">
-                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 mb-2">
-                            <h3 class="text-lg font-bold tech-font text-white">${escapeHTML(String(item.title))}</h3>
-                            <div class="flex items-center gap-3">
-                                <span class="text-xs font-mono bg-emerald-950/80 text-emerald-400 border border-emerald-800/50 px-2.5 py-1 rounded-md">
+                    <div class="bg-slate-50 border border-slate-200 p-5 rounded-xl relative space-y-2">
+                        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                            <h3 class="text-base font-bold text-slate-900">${escapeHTML(String(item.title))}</h3>
+                            <div class="flex items-center gap-2.5">
+                                <span class="text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-0.5 rounded-md">
                                     <i class="fa-solid fa-user-pen mr-1"></i> ${escapeHTML(String(item.author))}
                                 </span>
-                                <span class="text-xs text-slate-400 font-mono">${escapeHTML(String(formattedDate))}</span>
+                                <span class="text-xs text-slate-500 font-mono">${escapeHTML(String(formattedDate))}</span>
                                 ${canDelete ? `
-                                    <button onclick="deleteAnnouncement(${item.id}, '${item.author}')" class="text-red-400 hover:text-red-300 text-sm p-1" title="Padam Pengumuman">
+                                    <button onclick="deleteAnnouncement(${item.id}, '${item.author}')" class="text-slate-400 hover:text-red-600 text-sm p-1 transition" title="Padam Pengumuman">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 ` : ''}
                             </div>
                         </div>
-                        <p class="text-slate-300 text-sm leading-relaxed whitespace-pre-line">${escapeHTML(String(item.content))}</p>
+                        <p class="text-slate-600 text-sm leading-relaxed whitespace-pre-line">${escapeHTML(String(item.content))}</p>
                     </div>
                 `;
             }).join('');
@@ -637,9 +566,9 @@
             
             filterButtons.forEach(btn => {
                 if(btn.getAttribute('data-cat') === category) {
-                    btn.className = "filter-btn px-4 py-2 bg-emerald-600 text-white rounded-xl shadow-lg shadow-emerald-900/40 text-xs font-bold uppercase tracking-wider transition hover:bg-emerald-500 tech-font border border-emerald-400/30";
+                    btn.className = "filter-btn px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-semibold transition shadow-sm active-btn";
                 } else {
-                    btn.className = "filter-btn px-4 py-2 bg-slate-900/80 text-slate-300 border border-slate-800 rounded-xl text-xs font-semibold uppercase tracking-wider transition hover:bg-slate-800 hover:text-white tech-font";
+                    btn.className = "filter-btn px-4 py-2 bg-white text-slate-600 border border-slate-200 rounded-xl text-xs font-semibold transition hover:bg-slate-50";
                 }
             });
 
@@ -673,153 +602,6 @@
         }
 
         searchInput.addEventListener('input', filterApps);
-
-        // --- SKRIP ANIMASI ECO-TECH CANVAS ---
-        const canvas = document.getElementById('sketchCanvas');
-        const ctx = canvas.getContext('2d');
-
-        const schoolLogo = new Image();
-        schoolLogo.src = '/logo.png';
-
-        let clouds = [
-            { x: 100, y: 25, speed: 0.08, size: 30 },
-            { x: 480, y: 18, speed: 0.06, size: 40 },
-            { x: 800, y: 30, speed: 0.07, size: 35 }
-        ];
-
-        let birds = [
-            { x: -30, y: 35, speed: 0.25, wingCycle: 0 },
-            { x: -160, y: 48, speed: 0.2, wingCycle: 20 }
-        ];
-
-        let treeSway = 0;
-
-        function animateEcoTechScene() {
-            ctx.fillStyle = '#020617';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Garisan Tanah Tech Glow
-            ctx.strokeStyle = '#10b981';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.moveTo(0, canvas.height - 15);
-            ctx.lineTo(canvas.width, canvas.height - 15);
-            ctx.stroke();
-
-            // Awan
-            ctx.fillStyle = 'rgba(16, 185, 129, 0.07)';
-            for (let c of clouds) {
-                c.x += c.speed;
-                if (c.x > canvas.width + 80) c.x = -80;
-                
-                ctx.beginPath();
-                ctx.arc(c.x, c.y, c.size * 0.6, 0, Math.PI * 2);
-                ctx.arc(c.x + c.size * 0.5, c.y - c.size * 0.2, c.size * 0.5, 0, Math.PI * 2);
-                ctx.fill();
-            }
-
-            // Burung
-            ctx.strokeStyle = '#34d399';
-            ctx.lineWidth = 1.5;
-            for (let b of birds) {
-                b.x += b.speed;
-                b.wingCycle += 0.02;
-                if (b.x > canvas.width + 40) {
-                    b.x = -50;
-                    b.y = 20 + Math.random() * 25;
-                }
-                
-                let bx = b.x;
-                let by = b.y + Math.sin(b.wingCycle) * 3;
-                
-                ctx.beginPath();
-                ctx.moveTo(bx - 6, by - 4);
-                ctx.lineTo(bx, by);
-                ctx.lineTo(bx + 6, by - 4);
-                ctx.stroke();
-            }
-
-            // Bangunan Sekolah Minimalis Tech
-            let bX = 330, bY = 25, bW = 340, bH = 82;
-            ctx.fillStyle = '#0f172a';
-            ctx.fillRect(bX, bY, bW, bH);
-            ctx.strokeStyle = '#10b981';
-            ctx.lineWidth = 1.5;
-            ctx.strokeRect(bX, bY, bW, bH);
-
-            // Bumbung
-            ctx.fillStyle = '#065f46';
-            ctx.beginPath();
-            ctx.moveTo(bX - 12, bY);
-            ctx.lineTo(bX + bW / 2, bY - 25);
-            ctx.lineTo(bX + bW + 12, bY);
-            ctx.closePath();
-            ctx.fill();
-            ctx.stroke();
-
-            // Papan Nama SEMEKAR
-            ctx.fillStyle = '#022c22';
-            ctx.fillRect(bX + 90, bY + 12, bW - 180, 24);
-            ctx.strokeStyle = '#34d399';
-            ctx.strokeRect(bX + 90, bY + 12, bW - 180, 24);
-
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 12px "Outfit", sans-serif';
-            ctx.textAlign = 'center';
-            ctx.fillText('SEMEKAR', bX + bW / 2, bY + 28);
-
-            try {
-                ctx.drawImage(schoolLogo, bX + 100, bY + 14, 20, 20);
-            } catch(e) {}
-
-            // Tingkap LED Glow
-            ctx.fillStyle = '#38bdf8';
-            let winCols = 7, winRows = 2;
-            let startWX = bX + 35, startWY = bY + 44;
-            for (let r = 0; r < winRows; r++) {
-                for (let col = 0; col < winCols; col++) {
-                    ctx.fillRect(startWX + col * 40, startWY + r * 20, 18, 14);
-                }
-            }
-
-            // Pintu
-            ctx.fillStyle = '#042f2e';
-            ctx.fillRect(bX + bW / 2 - 15, bY + 48, 30, 34);
-            ctx.strokeStyle = '#10b981';
-            ctx.strokeRect(bX + bW / 2 - 15, bY + 48, 30, 34);
-
-            // Pokok Eco
-            treeSway += 0.02;
-            let sway = Math.sin(treeSway) * 0.04;
-
-            drawEcoTree(160, canvas.height - 15, sway);
-            drawEcoTree(840, canvas.height - 15, -sway);
-
-            requestAnimationFrame(animateEcoTechScene);
-        }
-
-        function drawEcoTree(x, y, angle) {
-            ctx.save();
-            ctx.translate(x, y);
-            
-            ctx.strokeStyle = '#78350f';
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(0, 0);
-            ctx.lineTo(0, -35);
-            ctx.stroke();
-
-            ctx.rotate(angle);
-            ctx.fillStyle = '#059669';
-            ctx.beginPath();
-            ctx.arc(0, -45, 18, 0, Math.PI * 2);
-            ctx.fill();
-
-            ctx.restore();
-        }
-
-        schoolLogo.onload = () => {};
-        animateEcoTechScene();
     </script>
 </body>
 </html>
