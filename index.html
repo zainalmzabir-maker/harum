@@ -25,12 +25,12 @@
             border: 1px solid #e2e8f0;
             border-radius: 1rem;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
         .corporate-card:hover {
             border-color: #cbd5e1;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            transform: translateY(-3px);
         }
 
         .corporate-input {
@@ -151,21 +151,28 @@
         <div id="appGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             <!-- 1. Pentadbiran - Laporan Kerosakan -->
-            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
+            <div class="app-card group corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="laporan kerosakan rosak.semekar.com pentadbiran">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Pentadbiran</span>
-                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                            <i class="fa-solid fa-screwdriver-wrench text-sm"></i>
+                    <!-- Badge Kategori -->
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md border border-blue-100">Pentadbiran</span>
+                        <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">AKTIF</span>
+                    </div>
+
+                    <!-- Ikon Besar Visual -->
+                    <div class="w-full h-28 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-[1.02]">
+                        <div class="w-16 h-16 rounded-2xl bg-white border border-blue-200/60 shadow-sm flex items-center justify-center text-blue-600">
+                            <i class="fa-solid fa-screwdriver-wrench text-3xl"></i>
                         </div>
                     </div>
+
                     <h3 class="text-lg font-bold text-slate-900 mb-1.5">Laporan Kerosakan</h3>
                     <p class="text-slate-500 text-xs leading-relaxed mb-6">Sistem pelaporan dan pengurusan kerosakan fasiliti sekolah dengan rekod masa nyata.</p>
                 </div>
                 <div>
                     <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-500">rosak.semekar.com</span>
+                        <span>Pautan:</span>
+                        <span class="truncate ml-2 text-slate-600 font-semibold">rosak.semekar.com</span>
                     </div>
                     <a href="https://rosak.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
@@ -175,21 +182,28 @@
             </div>
 
             <!-- 2. Pentadbiran - Sistem Minit Curai -->
-            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="sistem minit curai curai.semekar.com pentadbiran">
+            <div class="app-card group corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="sistem minit curai curai.semekar.com pentadbiran">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Pentadbiran</span>
-                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                            <i class="fa-solid fa-file-lines text-sm"></i>
+                    <!-- Badge Kategori -->
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md border border-blue-100">Pentadbiran</span>
+                        <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">AKTIF</span>
+                    </div>
+
+                    <!-- Ikon Besar Visual -->
+                    <div class="w-full h-28 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-[1.02]">
+                        <div class="w-16 h-16 rounded-2xl bg-white border border-blue-200/60 shadow-sm flex items-center justify-center text-blue-600">
+                            <i class="fa-solid fa-file-signature text-3xl"></i>
                         </div>
                     </div>
+
                     <h3 class="text-lg font-bold text-slate-900 mb-1.5">Sistem Minit Curai</h3>
                     <p class="text-slate-500 text-xs leading-relaxed mb-6">Pengurusan dan pelaporan minit curai mesyuarat, kursus, atau taklimat rasmi dengan pantas.</p>
                 </div>
                 <div>
                     <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-500">curai.semekar.com</span>
+                        <span>Pautan:</span>
+                        <span class="truncate ml-2 text-slate-600 font-semibold">curai.semekar.com</span>
                     </div>
                     <a href="https://curai.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
@@ -199,21 +213,29 @@
             </div>
 
             <!-- 3. Pentadbiran - Sistem Pelaporan Aktiviti Satu Muka (OPR) -->
-            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="sistem pelaporan aktiviti satu muka opr opr.semekar.com pentadbiran">
+            <div class="app-card group corporate-card p-6 flex flex-col justify-between" data-category="Pentadbiran" data-name="sistem pelaporan aktiviti satu muka opr opr.semekar.com pentadbiran">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Pentadbiran</span>
-                        <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
-                            <i class="fa-solid fa-file-waveform text-sm"></i>
+                    <!-- Badge Kategori -->
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 bg-blue-50 text-blue-700 text-[11px] font-semibold uppercase tracking-wider rounded-md border border-blue-100">Pentadbiran</span>
+                        <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">AKTIF</span>
+                    </div>
+
+                    <!-- Ikon Besar Visual -->
+                    <div class="w-full h-28 rounded-2xl bg-blue-50/70 border border-blue-100 flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-[1.02]">
+                        <div class="flex items-center justify-center gap-3 text-blue-600">
+                            <i class="fa-solid fa-file-lines text-5xl"></i>
+                            <i class="fa-solid fa-camera text-3xl text-blue-400"></i>
                         </div>
                     </div>
+
                     <h3 class="text-lg font-bold text-slate-900 mb-1.5">Sistem Pelaporan Aktiviti Satu Muka (OPR)</h3>
                     <p class="text-slate-500 text-xs leading-relaxed mb-6">Pelaporan ringkas satu muka surat bagi aktiviti atau program sekolah dengan pantas.</p>
                 </div>
                 <div>
                     <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-500">opr.semekar.com</span>
+                        <span>Pautan:</span>
+                        <span class="truncate ml-2 text-slate-600 font-semibold">opr.semekar.com</span>
                     </div>
                     <a href="https://opr.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
@@ -222,22 +244,30 @@
                 </div>
             </div>
 
-            <!-- 4. Kurikulum -->
-            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="Kurikulum" data-name="pengurusan headcount headcount.semekar.com kurikulum">
+            <!-- 4. Kurikulum - Pengurusan Headcount -->
+            <div class="app-card group corporate-card p-6 flex flex-col justify-between" data-category="Kurikulum" data-name="pengurusan headcount headcount.semekar.com kurikulum">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Kurikulum</span>
-                        <div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
-                            <i class="fa-solid fa-chart-line text-sm"></i>
+                    <!-- Badge Kategori -->
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 bg-emerald-50 text-emerald-700 text-[11px] font-semibold uppercase tracking-wider rounded-md border border-emerald-100">Kurikulum</span>
+                        <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">AKTIF</span>
+                    </div>
+
+                    <!-- Ikon Besar Visual -->
+                    <div class="w-full h-28 rounded-2xl bg-emerald-50/70 border border-emerald-100 flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-[1.02]">
+                        <div class="flex items-center justify-center gap-3.5 text-emerald-600">
+                            <i class="fa-solid fa-user-graduate text-5xl"></i>
+                            <i class="fa-solid fa-chart-line text-4xl text-emerald-400"></i>
                         </div>
                     </div>
+
                     <h3 class="text-lg font-bold text-slate-900 mb-1.5">Pengurusan Headcount</h3>
                     <p class="text-slate-500 text-xs leading-relaxed mb-6">Analisis prestasi akademik murid, unjuran sasaran peperiksaan, dan metrik kemajuan.</p>
                 </div>
                 <div>
                     <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-500">headcount.semekar.com</span>
+                        <span>Pautan:</span>
+                        <span class="truncate ml-2 text-slate-600 font-semibold">headcount.semekar.com</span>
                     </div>
                     <a href="https://headcount.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
@@ -246,22 +276,34 @@
                 </div>
             </div>
 
-            <!-- 5. Hal Ehwal Murid - Pelaporan Kehadiran Murid -->
-            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="HEM" data-name="pelaporan kehadiran murid hadir.semekar.com hem hal ehwal murid">
+            <!-- 5. Hal Ehwal Murid - Pelaporan Kehadiran Murid (IKON: Murid Masuk Pintu Pagar Sekolah) -->
+            <div class="app-card group corporate-card p-6 flex flex-col justify-between" data-category="HEM" data-name="pelaporan kehadiran murid hadir.semekar.com hem hal ehwal murid masuk pagar sekolah">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Hal Ehwal Murid</span>
-                        <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
-                            <i class="fa-solid fa-user-check text-sm"></i>
+                    <!-- Badge Kategori -->
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold uppercase tracking-wider rounded-md border border-amber-100">Hal Ehwal Murid</span>
+                        <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">AKTIF</span>
+                    </div>
+
+                    <!-- Ikon Besar Visual: Murid Sekolah Masuk ke Pagar Sekolah -->
+                    <div class="w-full h-28 rounded-2xl bg-amber-50/70 border border-amber-100 flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-[1.02]">
+                        <div class="flex items-center justify-center gap-3 text-amber-600">
+                            <!-- Murid Masuk -->
+                            <i class="fa-solid fa-person-walking text-4xl" title="Murid Sekolah"></i>
+                            <!-- Arah Masuk -->
+                            <i class="fa-solid fa-arrow-right-long text-xl text-amber-400"></i>
+                            <!-- Pagar / Pintu Gerbang Sekolah -->
+                            <i class="fa-solid fa-archway text-5xl" title="Pagar / Pintu Gerbang Sekolah"></i>
                         </div>
                     </div>
+
                     <h3 class="text-lg font-bold text-slate-900 mb-1.5">Pelaporan Kehadiran Murid</h3>
                     <p class="text-slate-500 text-xs leading-relaxed mb-6">Papan pemuka rekod kehadiran harian, statistik kehadiran, dan analitik disiplin.</p>
                 </div>
                 <div>
                     <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-500">hadir.semekar.com</span>
+                        <span>Pautan:</span>
+                        <span class="truncate ml-2 text-slate-600 font-semibold">hadir.semekar.com</span>
                     </div>
                     <a href="https://hadir.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
@@ -270,22 +312,32 @@
                 </div>
             </div>
 
-            <!-- 6. Hal Ehwal Murid - Sistem Murid Hadir Lewat -->
-            <div class="app-card corporate-card p-6 flex flex-col justify-between" data-category="HEM" data-name="sistem murid hadir lewat lewat.semekar.com hem hal ehwal murid">
+            <!-- 6. Hal Ehwal Murid - Sistem Murid Hadir Lewat (IKON: Murid Berlari Kejar Masa / Jam) -->
+            <div class="app-card group corporate-card p-6 flex flex-col justify-between" data-category="HEM" data-name="sistem murid hadir lewat lewat.semekar.com hem hal ehwal murid lambat">
                 <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold uppercase tracking-wider rounded-md">Hal Ehwal Murid</span>
-                        <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
-                            <i class="fa-solid fa-user-clock text-sm"></i>
+                    <!-- Badge Kategori -->
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="px-2.5 py-1 bg-amber-50 text-amber-700 text-[11px] font-semibold uppercase tracking-wider rounded-md border border-amber-100">Hal Ehwal Murid</span>
+                        <span class="text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-100">AKTIF</span>
+                    </div>
+
+                    <!-- Ikon Besar Visual: Murid Berlari Kejar Masa / Jam -->
+                    <div class="w-full h-28 rounded-2xl bg-amber-50/70 border border-amber-100 flex items-center justify-center mb-4 transition-transform duration-200 group-hover:scale-[1.02]">
+                        <div class="flex items-center justify-center gap-3 text-amber-600">
+                            <!-- Murid Berlari Laju -->
+                            <i class="fa-solid fa-person-running text-4xl" title="Murid Berlari Lewat"></i>
+                            <!-- Simbol Jam Amaran Lewat -->
+                            <i class="fa-solid fa-clock text-4xl text-rose-500" title="Kesesakan Masa / Hadir Lewat"></i>
                         </div>
                     </div>
+
                     <h3 class="text-lg font-bold text-slate-900 mb-1.5">Sistem Murid Hadir Lewat</h3>
                     <p class="text-slate-500 text-xs leading-relaxed mb-6">Perekodan dan pemantauan masa nyata bagi data murid hadir lewat ke sekolah untuk tindakan unit disiplin &amp; HEM.</p>
                 </div>
                 <div>
                     <div class="flex items-center justify-between text-[11px] text-slate-400 mb-3 font-mono bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
-                        <span>Status: <span class="text-emerald-600 font-bold">AKTIF</span></span>
-                        <span class="truncate ml-2 text-slate-500">lewat.semekar.com</span>
+                        <span>Pautan:</span>
+                        <span class="truncate ml-2 text-slate-600 font-semibold">lewat.semekar.com</span>
                     </div>
                     <a href="https://lewat.semekar.com" target="_blank" class="w-full inline-flex items-center justify-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-xl transition text-xs tracking-wide shadow-sm">
                         <span>Buka Sistem</span>
